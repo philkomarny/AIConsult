@@ -1648,6 +1648,15 @@ body {
     color: var(--ice);
 }
 
+.article-inline-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem auto 2rem;
+    border-radius: 4px;
+    opacity: 0.95;
+}
+
 /* Contact Page */
 .contact-content h1 {
     font-family: var(--font-display);
