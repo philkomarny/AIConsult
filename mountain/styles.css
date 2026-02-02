@@ -1003,6 +1003,8 @@ body {
     display: flex;
     flex-direction: column;
     padding: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Hero */
@@ -1526,6 +1528,24 @@ body {
 
 .contact-method .icon {
     font-size: 1.25rem;
+}
+
+.contact-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+}
+
+.whatsapp-icon {
+    color: #25D366;
+}
+
+.telegram-icon {
+    color: #0088cc;
+}
+
+.discord-contact-icon {
+    color: #5865F2;
 }
 
 .contact-method .label {
