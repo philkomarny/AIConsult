@@ -1289,6 +1289,7 @@ body {
     background: rgba(10, 22, 40, 0.6);
     backdrop-filter: blur(10px);
     transition: background 0.3s ease;
+    position: relative;
 }
 
 .role-card:hover {
@@ -1302,6 +1303,9 @@ body {
     color: var(--ice);
     opacity: 0.6;
     transition: opacity 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .role-card:hover .role-logo {
@@ -1314,14 +1318,26 @@ body {
     height: 100%;
 }
 
+.role-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: top left;
+}
+
+.role-logo-lg {
+    width: 50px;
+    height: 50px;
+}
+
 .role-info {
     flex: 1;
     min-width: 0;
 }
 
 .role-info h3 {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
     font-weight: 600;
     color: var(--snow);
     margin-bottom: 0.25rem;
@@ -1330,7 +1346,7 @@ body {
 .role-title {
     font-size: 0.85rem;
     color: var(--gold);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.15rem;
 }
 
 .role-dates {
@@ -1342,11 +1358,27 @@ body {
 }
 
 .role-highlight-inline {
-    flex: 1;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding-left: 1.5rem;
     border-left: 1px solid rgba(240, 244, 248, 0.1);
+}
+
+.role-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid rgba(240, 244, 248, 0.1);
+}
+
+.role-quote {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin: 0;
 }
 
 .role-highlight-inline p {
