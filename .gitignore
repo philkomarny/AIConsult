@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# AI/Editor configs (keep these local)
+.agent/
+.agents/
+.claude/
+.cline/
+.codex/
+.commandcode/
+.continue/
+.crush/
+.cursor/
+.factory/
+.gemini/
+.goose/
+.kilocode/
+.kiro/
+.mcpjam/
+.neovate/
+.opencode/
+.openhands/
+.pi/
+.qoder/
+.qwen/
+.roo/
+.trae/
+.windsurf/
+.zencoder/

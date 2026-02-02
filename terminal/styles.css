@@ -1,0 +1,270 @@
+/* ========================================
+   Terminal Session — Live CLI Aesthetic
+   ======================================== */
+
+:root {
+    --bg: #0d1117;
+    --green: #33ff33;
+    --amber: #ffaa00;
+    --dim: #586069;
+    --white: #e6edf3;
+    --red: #ff5f56;
+    --yellow: #ffbd2e;
+    --green-btn: #27c93f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'IBM Plex Mono', monospace;
+    background: #000;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+::selection {
+    background: var(--green);
+    color: var(--bg);
+}
+
+/* CRT Effects */
+.crt-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+}
+
+.scanlines {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1001;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+}
+
+/* Terminal Window */
+.terminal {
+    width: 100%;
+    max-width: 800px;
+    height: 80vh;
+    max-height: 600px;
+    background: var(--bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.1),
+        0 20px 60px rgba(0,0,0,0.5),
+        0 0 100px rgba(51, 255, 51, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-header {
+    background: #161b22;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-buttons span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.btn-close { background: var(--red); }
+.btn-minimize { background: var(--yellow); }
+.btn-maximize { background: var(--green-btn); }
+
+.terminal-title {
+    flex: 1;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--dim);
+}
+
+.terminal-body {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Output */
+.output {
+    flex: 1;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.output .line {
+    margin-bottom: 0.25rem;
+}
+
+.output .command {
+    color: var(--white);
+}
+
+.output .prompt-display {
+    color: var(--green);
+}
+
+.output .result {
+    color: var(--dim);
+}
+
+.output .highlight {
+    color: var(--amber);
+}
+
+.output .error {
+    color: var(--red);
+}
+
+.output .link {
+    color: var(--amber);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.output .link:hover {
+    color: var(--green);
+}
+
+/* Input Line */
+.input-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.prompt {
+    color: var(--green);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.command-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 0.9rem;
+    caret-color: var(--green);
+}
+
+.cursor {
+    width: 8px;
+    height: 1.2em;
+    background: var(--green);
+    animation: blink 1s step-end infinite;
+    display: none;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Clickable commands */
+.clickable-cmd {
+    color: var(--amber);
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+.clickable-cmd:hover {
+    color: var(--green);
+}
+
+/* Typing animation */
+.typing {
+    overflow: hidden;
+    border-right: 2px solid var(--green);
+    animation: typing 0.5s steps(20, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--green); }
+}
+
+/* Scrollbar */
+.terminal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background: var(--dim);
+    border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    body {
+        padding: 0;
+    }
+
+    .terminal {
+        max-width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .terminal-body {
+        font-size: 0.8rem;
+    }
+
+    .prompt {
+        font-size: 0.8rem;
+    }
+
+    .command-input {
+        font-size: 0.8rem;
+    }
+}

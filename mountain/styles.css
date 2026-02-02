@@ -1,0 +1,1563 @@
+/* ========================================
+   Mountain — Alpine Clarity
+   Phil Komarny · Crested Butte · 9,000 ft
+   ======================================== */
+
+:root {
+    /* Sky gradient - dawn/dusk alpine */
+    --sky-top: #0a1628;
+    --sky-mid: #1a3a5c;
+    --sky-bottom: #d4a574;
+
+    /* Mountains - layered depth */
+    --mountain-far: #2d4a6d;
+    --mountain-mid: #1e3550;
+    --mountain-near: #152538;
+
+    /* Accents */
+    --snow: #f0f4f8;
+    --ice: #a8c5d8;
+    --gold: #d4a574;
+    --pine: #2d4a3d;
+
+    /* Text */
+    --text-light: #f0f4f8;
+    --text-dim: rgba(240, 244, 248, 0.6);
+
+    /* Typography */
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--sky-top);
+    color: var(--text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: var(--gold);
+    color: var(--sky-top);
+}
+
+/* ========================================
+   Sky & Atmosphere
+   ======================================== */
+
+.sky {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        var(--sky-top) 0%,
+        var(--sky-mid) 50%,
+        var(--sky-bottom) 100%
+    );
+    z-index: 0;
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+}
+
+.stars::before,
+.stars::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.stars::before {
+    background-image:
+        radial-gradient(1px 1px at 100px 50px, white, transparent),
+        radial-gradient(1.5px 1.5px at 300px 80px, white, transparent),
+        radial-gradient(1.5px 1.5px at 500px 100px, white, transparent),
+        radial-gradient(1px 1px at 700px 60px, white, transparent),
+        radial-gradient(1px 1px at 900px 120px, white, transparent),
+        radial-gradient(1.5px 1.5px at 1100px 40px, white, transparent),
+        radial-gradient(1.5px 1.5px at 350px 280px, white, transparent),
+        radial-gradient(1.5px 1.5px at 950px 310px, white, transparent),
+        radial-gradient(2px 2px at 650px 45px, white, transparent),
+        radial-gradient(1px 1px at 1300px 90px, white, transparent);
+    animation: twinkle1 3s ease-in-out infinite;
+}
+
+.stars::after {
+    background-image:
+        radial-gradient(1px 1px at 200px 150px, white, transparent),
+        radial-gradient(1px 1px at 400px 200px, white, transparent),
+        radial-gradient(1px 1px at 600px 250px, white, transparent),
+        radial-gradient(1.5px 1.5px at 800px 180px, white, transparent),
+        radial-gradient(1px 1px at 1000px 220px, white, transparent),
+        radial-gradient(1px 1px at 1200px 160px, white, transparent),
+        radial-gradient(1px 1px at 150px 300px, white, transparent),
+        radial-gradient(1px 1px at 550px 320px, white, transparent),
+        radial-gradient(1px 1px at 750px 290px, white, transparent),
+        radial-gradient(1px 1px at 1150px 270px, white, transparent),
+        radial-gradient(2px 2px at 250px 35px, white, transparent),
+        radial-gradient(1.5px 1.5px at 1050px 70px, white, transparent);
+    animation: twinkle2 4s ease-in-out infinite;
+}
+
+/* Shooting star */
+.stars .shooting-star {
+    position: absolute;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, white, transparent);
+    top: 15%;
+    left: -100px;
+    transform: rotate(-35deg);
+    animation: shoot 8s ease-in-out infinite;
+    animation-delay: 3s;
+    opacity: 0;
+}
+
+@keyframes twinkle1 {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes twinkle2 {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.25; }
+}
+
+/* Pleiades Constellation */
+.pleiades {
+    position: absolute;
+    top: 6%;
+    right: 10%;
+    width: 140px;
+    height: 120px;
+}
+
+.pleiades .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: pleiadestwinkle 2.5s ease-in-out infinite;
+}
+
+/* The Seven Sisters - spread out more */
+.pleiades .alcyone {
+    width: 4px;
+    height: 4px;
+    top: 40%;
+    left: 45%;
+    box-shadow: 0 0 6px 2px rgba(200, 220, 255, 0.8);
+    animation-delay: 0s;
+}
+
+.pleiades .atlas {
+    width: 3px;
+    height: 3px;
+    top: 15%;
+    left: 65%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.6);
+    animation-delay: 0.3s;
+}
+
+.pleiades .electra {
+    width: 3px;
+    height: 3px;
+    top: 55%;
+    left: 20%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.6);
+    animation-delay: 0.5s;
+}
+
+.pleiades .maia {
+    width: 3.5px;
+    height: 3.5px;
+    top: 25%;
+    left: 32%;
+    box-shadow: 0 0 5px 1px rgba(200, 220, 255, 0.7);
+    animation-delay: 0.7s;
+}
+
+.pleiades .merope {
+    width: 2.5px;
+    height: 2.5px;
+    top: 65%;
+    left: 55%;
+    box-shadow: 0 0 3px 1px rgba(200, 220, 255, 0.5);
+    animation-delay: 0.2s;
+}
+
+.pleiades .taygeta {
+    width: 2.5px;
+    height: 2.5px;
+    top: 8%;
+    left: 40%;
+    box-shadow: 0 0 3px 1px rgba(200, 220, 255, 0.5);
+    animation-delay: 0.9s;
+}
+
+.pleiades .pleione {
+    width: 2px;
+    height: 2px;
+    top: 5%;
+    left: 72%;
+    box-shadow: 0 0 3px 1px rgba(200, 220, 255, 0.4);
+    animation-delay: 0.4s;
+}
+
+/* Fainter companion stars */
+.pleiades .celaeno {
+    width: 2px;
+    height: 2px;
+    top: 75%;
+    left: 35%;
+    box-shadow: 0 0 2px 1px rgba(200, 220, 255, 0.4);
+    animation-delay: 0.6s;
+}
+
+.pleiades .sterope {
+    width: 1.5px;
+    height: 1.5px;
+    top: 60%;
+    left: 8%;
+    box-shadow: 0 0 2px 1px rgba(200, 220, 255, 0.3);
+    animation-delay: 0.8s;
+}
+
+@keyframes pleiadestwinkle {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Big Dipper Constellation - behind the title */
+.big-dipper {
+    position: absolute;
+    top: 8%;
+    left: 3%;
+    width: 420px;
+    height: 280px;
+    opacity: 0.7;
+}
+
+.big-dipper .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: dippertwinkle 3s ease-in-out infinite;
+}
+
+.big-dipper .dipper-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* The Bowl */
+.big-dipper .dubhe {
+    width: 6px;
+    height: 6px;
+    top: 72%;
+    left: 5%;
+    box-shadow: 0 0 10px 4px rgba(200, 220, 255, 0.9);
+    animation-delay: 0s;
+}
+
+.big-dipper .merak {
+    width: 5px;
+    height: 5px;
+    top: 88%;
+    left: 18%;
+    box-shadow: 0 0 8px 3px rgba(200, 220, 255, 0.8);
+    animation-delay: 0.4s;
+}
+
+.big-dipper .phecda {
+    width: 5px;
+    height: 5px;
+    top: 68%;
+    left: 32%;
+    box-shadow: 0 0 8px 3px rgba(200, 220, 255, 0.7);
+    animation-delay: 0.8s;
+}
+
+.big-dipper .megrez {
+    width: 4px;
+    height: 4px;
+    top: 48%;
+    left: 40%;
+    box-shadow: 0 0 6px 2px rgba(200, 220, 255, 0.7);
+    animation-delay: 0.2s;
+}
+
+/* The Handle */
+.big-dipper .alioth {
+    width: 5px;
+    height: 5px;
+    top: 38%;
+    left: 55%;
+    box-shadow: 0 0 8px 3px rgba(200, 220, 255, 0.8);
+    animation-delay: 0.6s;
+}
+
+.big-dipper .mizar {
+    width: 5px;
+    height: 5px;
+    top: 22%;
+    left: 72%;
+    box-shadow: 0 0 8px 3px rgba(200, 220, 255, 0.8);
+    animation-delay: 1s;
+}
+
+.big-dipper .alkaid {
+    width: 5px;
+    height: 5px;
+    top: 5%;
+    left: 92%;
+    box-shadow: 0 0 8px 3px rgba(200, 220, 255, 0.8);
+    animation-delay: 0.3s;
+}
+
+@keyframes dippertwinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* ========================================
+   Orion Constellation (phil.html)
+   ======================================== */
+
+.orion {
+    position: absolute;
+    top: 8%;
+    left: 8%;
+    width: 120px;
+    height: 150px;
+    opacity: 0.6;
+}
+
+.orion .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: oriontwinkle 3.5s ease-in-out infinite;
+}
+
+.orion .constellation-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Shoulders */
+.orion .betelgeuse {
+    width: 5px;
+    height: 5px;
+    top: 8%;
+    left: 12%;
+    background: #ffccaa;
+    box-shadow: 0 0 8px 3px rgba(255, 180, 140, 0.8);
+    animation-delay: 0s;
+}
+
+.orion .bellatrix {
+    width: 3px;
+    height: 3px;
+    top: 35%;
+    left: 78%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.6);
+    animation-delay: 0.5s;
+}
+
+/* Belt */
+.orion .alnitak {
+    width: 2.5px;
+    height: 2.5px;
+    top: 48%;
+    left: 35%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.6);
+    animation-delay: 0.2s;
+}
+
+.orion .alnilam {
+    width: 3px;
+    height: 3px;
+    top: 48%;
+    left: 48%;
+    box-shadow: 0 0 5px 2px rgba(200, 220, 255, 0.7);
+    animation-delay: 0.7s;
+}
+
+.orion .mintaka {
+    width: 2.5px;
+    height: 2.5px;
+    top: 48%;
+    left: 60%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.6);
+    animation-delay: 0.4s;
+}
+
+/* Feet */
+.orion .rigel {
+    width: 4px;
+    height: 4px;
+    top: 88%;
+    left: 80%;
+    background: #aaccff;
+    box-shadow: 0 0 6px 2px rgba(170, 200, 255, 0.8);
+    animation-delay: 0.3s;
+}
+
+.orion .saiph {
+    width: 3px;
+    height: 3px;
+    top: 88%;
+    left: 18%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.6);
+    animation-delay: 0.9s;
+}
+
+@keyframes oriontwinkle {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* ========================================
+   Cassiopeia Constellation (phil.html)
+   ======================================== */
+
+.cassiopeia {
+    position: absolute;
+    top: 6%;
+    right: 10%;
+    width: 100px;
+    height: 50px;
+    opacity: 0.55;
+}
+
+.cassiopeia .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: casstwinkle 2.8s ease-in-out infinite;
+}
+
+.cassiopeia .constellation-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cassiopeia .schedar {
+    width: 3.5px;
+    height: 3.5px;
+    top: 78%;
+    left: 2%;
+    box-shadow: 0 0 5px 2px rgba(255, 200, 150, 0.7);
+    animation-delay: 0s;
+}
+
+.cassiopeia .caph {
+    width: 3px;
+    height: 3px;
+    top: 15%;
+    left: 22%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.6);
+    animation-delay: 0.4s;
+}
+
+.cassiopeia .gamma-cas {
+    width: 3px;
+    height: 3px;
+    top: 68%;
+    left: 48%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.6);
+    animation-delay: 0.2s;
+}
+
+.cassiopeia .ruchbah {
+    width: 2.5px;
+    height: 2.5px;
+    top: 15%;
+    left: 72%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.5);
+    animation-delay: 0.6s;
+}
+
+.cassiopeia .segin {
+    width: 2.5px;
+    height: 2.5px;
+    top: 78%;
+    left: 92%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.5);
+    animation-delay: 0.8s;
+}
+
+@keyframes casstwinkle {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ========================================
+   Cygnus Constellation (thoughts.html)
+   ======================================== */
+
+.cygnus {
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    width: 100px;
+    height: 120px;
+    opacity: 0.55;
+}
+
+.cygnus .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: cygnustwinkle 3.2s ease-in-out infinite;
+}
+
+.cygnus .constellation-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cygnus .deneb {
+    width: 4px;
+    height: 4px;
+    top: 2%;
+    left: 48%;
+    box-shadow: 0 0 6px 2px rgba(200, 220, 255, 0.8);
+    animation-delay: 0s;
+}
+
+.cygnus .sadr {
+    width: 3px;
+    height: 3px;
+    top: 40%;
+    left: 48%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.6);
+    animation-delay: 0.3s;
+}
+
+.cygnus .gienah-cyg {
+    width: 2.5px;
+    height: 2.5px;
+    top: 27%;
+    left: 12%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.5);
+    animation-delay: 0.6s;
+}
+
+.cygnus .delta-cyg {
+    width: 2.5px;
+    height: 2.5px;
+    top: 27%;
+    left: 82%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.5);
+    animation-delay: 0.5s;
+}
+
+.cygnus .albireo {
+    width: 3px;
+    height: 3px;
+    top: 94%;
+    left: 48%;
+    background: #ffeeaa;
+    box-shadow: 0 0 5px 2px rgba(255, 220, 150, 0.7);
+    animation-delay: 0.2s;
+}
+
+@keyframes cygnustwinkle {
+    0%, 100% { opacity: 0.65; }
+    50% { opacity: 1; }
+}
+
+/* ========================================
+   Leo Constellation (thoughts.html)
+   ======================================== */
+
+.leo {
+    position: absolute;
+    top: 8%;
+    right: 8%;
+    width: 140px;
+    height: 80px;
+    opacity: 0.5;
+}
+
+.leo .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: leotwinkle 3s ease-in-out infinite;
+}
+
+.leo .constellation-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.leo .regulus {
+    width: 4px;
+    height: 4px;
+    top: 72%;
+    left: 5%;
+    background: #aaccff;
+    box-shadow: 0 0 6px 2px rgba(170, 200, 255, 0.8);
+    animation-delay: 0s;
+}
+
+.leo .algieba {
+    width: 3px;
+    height: 3px;
+    top: 40%;
+    left: 18%;
+    box-shadow: 0 0 4px 1px rgba(255, 220, 180, 0.6);
+    animation-delay: 0.4s;
+}
+
+.leo .ras-elased {
+    width: 2.5px;
+    height: 2.5px;
+    top: 28%;
+    left: 38%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.5);
+    animation-delay: 0.7s;
+}
+
+.leo .adhafera {
+    width: 2px;
+    height: 2px;
+    top: 15%;
+    left: 52%;
+    box-shadow: 0 0 3px 1px rgba(200, 220, 255, 0.4);
+    animation-delay: 0.2s;
+}
+
+.leo .zosma {
+    width: 2.5px;
+    height: 2.5px;
+    top: 60%;
+    left: 58%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.5);
+    animation-delay: 0.5s;
+}
+
+.leo .denebola {
+    width: 3.5px;
+    height: 3.5px;
+    top: 52%;
+    left: 85%;
+    box-shadow: 0 0 5px 2px rgba(200, 220, 255, 0.7);
+    animation-delay: 0.3s;
+}
+
+@keyframes leotwinkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* ========================================
+   Lyra Constellation (contact.html)
+   ======================================== */
+
+.lyra {
+    position: absolute;
+    top: 5%;
+    right: 12%;
+    width: 60px;
+    height: 70px;
+    opacity: 0.6;
+}
+
+.lyra .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: lyratwinkle 2.5s ease-in-out infinite;
+}
+
+.lyra .constellation-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.lyra .vega {
+    width: 5px;
+    height: 5px;
+    top: 5%;
+    left: 48%;
+    background: #ccddff;
+    box-shadow: 0 0 10px 4px rgba(200, 220, 255, 0.9);
+    animation-delay: 0s;
+}
+
+.lyra .sheliak {
+    width: 2.5px;
+    height: 2.5px;
+    top: 40%;
+    left: 30%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.5);
+    animation-delay: 0.3s;
+}
+
+.lyra .sulafat {
+    width: 2.5px;
+    height: 2.5px;
+    top: 40%;
+    left: 65%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.5);
+    animation-delay: 0.6s;
+}
+
+.lyra .delta-lyr {
+    width: 2px;
+    height: 2px;
+    top: 77%;
+    left: 15%;
+    box-shadow: 0 0 3px 1px rgba(200, 220, 255, 0.4);
+    animation-delay: 0.2s;
+}
+
+.lyra .zeta-lyr {
+    width: 2px;
+    height: 2px;
+    top: 77%;
+    left: 82%;
+    box-shadow: 0 0 3px 1px rgba(200, 220, 255, 0.4);
+    animation-delay: 0.5s;
+}
+
+@keyframes lyratwinkle {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.08); }
+}
+
+/* ========================================
+   Scorpius Constellation (contact.html)
+   ======================================== */
+
+.scorpius {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 150px;
+    height: 100px;
+    opacity: 0.5;
+}
+
+.scorpius .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: scorpiustwinkle 3.3s ease-in-out infinite;
+}
+
+.scorpius .constellation-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.scorpius .antares {
+    width: 5px;
+    height: 5px;
+    top: 28%;
+    left: 48%;
+    background: #ff9966;
+    box-shadow: 0 0 8px 3px rgba(255, 120, 80, 0.8);
+    animation-delay: 0s;
+}
+
+.scorpius .graffias {
+    width: 2.5px;
+    height: 2.5px;
+    top: 12%;
+    left: 18%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.5);
+    animation-delay: 0.4s;
+}
+
+.scorpius .dschubba {
+    width: 3px;
+    height: 3px;
+    top: 18%;
+    left: 38%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.6);
+    animation-delay: 0.2s;
+}
+
+.scorpius .sargas {
+    width: 2.5px;
+    height: 2.5px;
+    top: 58%;
+    left: 68%;
+    box-shadow: 0 0 4px 1px rgba(200, 220, 255, 0.5);
+    animation-delay: 0.7s;
+}
+
+.scorpius .shaula {
+    width: 3px;
+    height: 3px;
+    top: 88%;
+    left: 88%;
+    box-shadow: 0 0 5px 2px rgba(200, 220, 255, 0.6);
+    animation-delay: 0.5s;
+}
+
+.scorpius .lesath {
+    width: 2px;
+    height: 2px;
+    top: 92%;
+    left: 82%;
+    box-shadow: 0 0 3px 1px rgba(200, 220, 255, 0.4);
+    animation-delay: 0.3s;
+}
+
+@keyframes scorpiustwinkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+@keyframes shoot {
+    0% {
+        left: -100px;
+        opacity: 0;
+    }
+    2% {
+        opacity: 1;
+    }
+    15% {
+        left: 110%;
+        opacity: 0;
+    }
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+.atmosphere {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, rgba(212, 165, 116, 0.15), transparent);
+}
+
+/* ========================================
+   Clouds
+   ======================================== */
+
+.clouds {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.cloud {
+    position: absolute;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(20px);
+}
+
+.cloud-1 {
+    width: 400px;
+    height: 120px;
+    top: 35%;
+    left: -400px;
+    opacity: 0.3;
+    animation: drift 60s linear infinite;
+}
+
+.cloud-2 {
+    width: 300px;
+    height: 80px;
+    top: 45%;
+    left: -300px;
+    opacity: 0.15;
+    animation: drift 75s linear infinite;
+    animation-delay: -20s;
+}
+
+.cloud-3 {
+    width: 500px;
+    height: 150px;
+    top: 30%;
+    left: -500px;
+    opacity: 0.2;
+    animation: drift 90s linear infinite;
+    animation-delay: -40s;
+}
+
+.cloud-4 {
+    width: 250px;
+    height: 70px;
+    top: 50%;
+    left: -250px;
+    opacity: 0.1;
+    animation: drift 55s linear infinite;
+    animation-delay: -10s;
+}
+
+.cloud-5 {
+    width: 350px;
+    height: 100px;
+    top: 40%;
+    left: -350px;
+    opacity: 0.25;
+    animation: drift 80s linear infinite;
+    animation-delay: -50s;
+}
+
+@keyframes drift {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(100vw + 600px));
+    }
+}
+
+/* ========================================
+   Mountains
+   ======================================== */
+
+.mountains {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 65vh;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.mountain-range {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.range-far {
+    opacity: 0.6;
+    transform: translateY(5%);
+}
+
+.range-mid {
+    opacity: 0.85;
+    transform: translateY(0%);
+}
+
+.range-near {
+    opacity: 1;
+    transform: translateY(8%);
+}
+
+.tree-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6%;
+    background: linear-gradient(to top, var(--pine), transparent);
+}
+
+/* ========================================
+   Content
+   ======================================== */
+
+.content {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+}
+
+/* Hero */
+.hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 900px;
+    padding-bottom: 4rem;
+}
+
+/* Hero Content */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.hero-line {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 9vw, 6rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.05;
+    color: var(--snow);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlideUp 1s ease 0.3s forwards;
+}
+
+.hero-tagline {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--text-dim);
+    margin-top: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlideUp 1s ease 0.6s forwards;
+}
+
+.hero-tagline .sep {
+    color: var(--gold);
+    margin: 0 0.5rem;
+    opacity: 0.6;
+}
+
+.hero-tagline .dim {
+    opacity: 0.5;
+}
+
+/* Navigation */
+.main-nav {
+    display: flex;
+    gap: 1px;
+    background: rgba(240, 244, 248, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    max-width: 900px;
+    margin-bottom: 4rem;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 1s forwards;
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: rgba(10, 22, 40, 0.6);
+    backdrop-filter: blur(10px);
+    text-decoration: none;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nav-item:hover {
+    background: rgba(10, 22, 40, 0.8);
+}
+
+.nav-item:hover::before {
+    transform: scaleX(1);
+}
+
+.nav-marker {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+
+.nav-label {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover .nav-label {
+    color: var(--gold);
+}
+
+.nav-desc {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    padding: 2rem 0;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 1.2s forwards;
+}
+
+.coordinates {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+}
+
+.coord-sep {
+    color: var(--gold);
+}
+
+.footer-location {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ice);
+}
+
+/* Animations */
+@keyframes fadeSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeSlideDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   Interior Pages
+   ======================================== */
+
+.page {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    padding: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(240, 244, 248, 0.2);
+}
+
+.back-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--gold);
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ice);
+}
+
+/* Bio Page */
+.bio-content h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.bio-content h1 .highlight {
+    color: var(--gold);
+}
+
+.bio-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.bio-content p.dim {
+    color: var(--text-dim);
+    font-style: italic;
+}
+
+.bio-content p.snide {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.bio-content p.snide a {
+    color: var(--gold);
+    text-decoration: none;
+}
+
+.bio-content p.snide a:hover {
+    text-decoration: underline;
+}
+
+.section-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(240, 244, 248, 0.2);
+}
+
+/* Role Cards */
+.role-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(240, 244, 248, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 2rem 0;
+}
+
+.role-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(10, 22, 40, 0.6);
+    backdrop-filter: blur(10px);
+    transition: background 0.3s ease;
+}
+
+.role-card:hover {
+    background: rgba(10, 22, 40, 0.8);
+}
+
+.role-logo {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    color: var(--ice);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.role-card:hover .role-logo {
+    opacity: 1;
+    color: var(--gold);
+}
+
+.role-logo svg {
+    width: 100%;
+    height: 100%;
+}
+
+.role-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.role-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--snow);
+    margin-bottom: 0.25rem;
+}
+
+.role-title {
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+
+.role-dates {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+}
+
+.role-highlight-inline {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    border-left: 1px solid rgba(240, 244, 248, 0.1);
+}
+
+.role-highlight-inline p {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Thoughts Page */
+.thoughts-intro p {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--ice);
+    margin-bottom: 2rem;
+}
+
+.thoughts-empty {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.thoughts-empty p {
+    font-style: italic;
+    color: var(--text-dim);
+}
+
+.thoughts-empty .blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Contact Page */
+.contact-content h1 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.contact-content > p {
+    font-size: 1rem;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+/* Discord Community Card */
+.discord-community {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem 1.75rem;
+    background: linear-gradient(135deg, rgba(88, 101, 242, 0.2) 0%, rgba(88, 101, 242, 0.1) 100%);
+    border: 1px solid rgba(88, 101, 242, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.discord-community:hover {
+    background: linear-gradient(135deg, rgba(88, 101, 242, 0.3) 0%, rgba(88, 101, 242, 0.15) 100%);
+    border-color: rgba(88, 101, 242, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(88, 101, 242, 0.2);
+}
+
+.discord-icon {
+    width: 40px;
+    height: 40px;
+    color: #5865F2;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.discord-community:hover .discord-icon {
+    transform: scale(1.1);
+}
+
+.discord-community-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.discord-community-label {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--snow);
+}
+
+.discord-community-desc {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.discord-community-arrow {
+    margin-left: auto;
+    font-size: 1.5rem;
+    color: #5865F2;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.discord-community:hover .discord-community-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: rgba(10, 22, 40, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.contact-method:hover {
+    background: rgba(10, 22, 40, 0.8);
+    transform: translateX(4px);
+}
+
+.contact-method .icon {
+    font-size: 1.25rem;
+}
+
+.contact-method .label {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.contact-method .value {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+.contact-method:hover .value {
+    color: var(--gold);
+}
+
+.contact-note {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--text-dim);
+    text-align: center;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 768px) {
+    .content {
+        padding: 2rem;
+    }
+
+    .main-nav {
+        flex-direction: column;
+    }
+
+    .role-card {
+        flex-direction: column;
+    }
+
+    .role-highlight-inline {
+        border-left: none;
+        border-top: 1px solid rgba(240, 244, 248, 0.1);
+        padding-left: 0;
+        padding-top: 1rem;
+        margin-top: 0.75rem;
+    }
+
+    .mountains {
+        height: 35vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title .title-line {
+        font-size: 2rem;
+    }
+
+    .nav-label {
+        font-size: 1.25rem;
+    }
+
+    .elevation-marker {
+        margin-bottom: 1rem;
+    }
+}

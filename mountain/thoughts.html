@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Notes — Phil Komarny</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sky">
+        <div class="stars"></div>
+        <!-- Cygnus (Northern Cross) - top left -->
+        <div class="cygnus">
+            <span class="star deneb"></span>
+            <span class="star sadr"></span>
+            <span class="star gienah-cyg"></span>
+            <span class="star delta-cyg"></span>
+            <span class="star albireo"></span>
+        </div>
+        <!-- Leo - top right -->
+        <div class="leo">
+            <span class="star regulus"></span>
+            <span class="star denebola"></span>
+            <span class="star algieba"></span>
+            <span class="star zosma"></span>
+            <span class="star ras-elased"></span>
+            <span class="star adhafera"></span>
+        </div>
+        <div class="atmosphere"></div>
+    </div>
+
+    <div class="mountains">
+        <!-- Far range - distant peaks -->
+        <svg class="mountain-range range-far" viewBox="0 0 1440 500" preserveAspectRatio="none">
+            <path d="M0,500 L0,320 L80,280 L160,320 L280,220 L400,280 L520,180 L640,240 L760,140 L880,200 L1000,120 L1120,180 L1240,100 L1360,160 L1440,120 L1440,500 Z" fill="var(--mountain-far)"/>
+        </svg>
+        <!-- Mid range - MT. CRESTED BUTTE - the iconic shape -->
+        <svg class="mountain-range range-mid" viewBox="0 0 1440 500" preserveAspectRatio="none">
+            <path d="M0,500 L0,380 L100,340 L180,360
+                     L280,320 L380,340
+                     L480,300 L560,280
+                     L640,240 L700,180 L750,120 L800,70 L850,50 L900,70 L950,110 L1020,180 L1100,240
+                     L1180,280 L1260,260 L1340,290 L1440,250 L1440,500 Z" fill="var(--mountain-mid)"/>
+            <!-- Snow cap on Mt. Crested Butte -->
+            <path d="M750,120 L800,70 L850,50 L900,70 L950,110 L1020,180 L980,190 L920,130 L850,100 L800,120 L750,120 Z" fill="rgba(240,244,248,0.15)"/>
+        </svg>
+        <!-- Near range - foothills -->
+        <svg class="mountain-range range-near" viewBox="0 0 1440 500" preserveAspectRatio="none">
+            <path d="M0,500 L0,380 L120,340 L240,370 L360,320 L480,360 L600,300 L720,350 L840,290 L960,340 L1080,280 L1200,330 L1320,290 L1440,320 L1440,500 Z" fill="var(--mountain-near)"/>
+        </svg>
+        <div class="tree-line"></div>
+    </div>
+
+    <main class="page">
+        <header class="page-header">
+            <a href="index.html" class="back-link">← Base Camp</a>
+            <span class="page-title">Field Notes</span>
+        </header>
+
+        <div class="thoughts-intro">
+            <p>Observations from altitude — on AI, technology, and getting things done.</p>
+        </div>
+
+        <div class="thoughts-empty">
+            <p>Writing in progress<span class="blink">...</span></p>
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>
