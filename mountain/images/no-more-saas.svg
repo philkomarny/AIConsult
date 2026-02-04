@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="50%" style="stop-color:#1a3a5c"/>
+      <stop offset="100%" style="stop-color:#152538"/>
+    </linearGradient>
+
+    <linearGradient id="strikeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d4a574"/>
+      <stop offset="50%" style="stop-color:#e8c4a0"/>
+      <stop offset="100%" style="stop-color:#d4a574"/>
+    </linearGradient>
+
+    <linearGradient id="glowGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0"/>
+    </linearGradient>
+
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d4a6d;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#1e3550;stop-opacity:0.6"/>
+    </linearGradient>
+
+    <linearGradient id="freedomGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a8c5d8"/>
+      <stop offset="50%" style="stop-color:#d4a574"/>
+      <stop offset="100%" style="stop-color:#a8c5d8"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0a1628" flood-opacity="0.5"/>
+    </filter>
+
+    <!-- Grid pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1" fill="#a8c5d8" opacity="0.1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  <rect width="800" height="400" fill="url(#grid)"/>
+
+  <!-- Atmospheric glow -->
+  <ellipse cx="400" cy="200" rx="350" ry="180" fill="url(#glowGrad)" opacity="0.4"/>
+
+  <!-- Falling/broken cloud icons representing SaaS -->
+  <g opacity="0.4">
+    <!-- Broken cloud 1 - top left, falling -->
+    <g transform="translate(120, 80) rotate(-15)">
+      <path d="M0,30 Q0,15 15,15 Q15,0 35,0 Q55,0 55,15 Q70,15 70,30 Q70,45 55,45 L15,45 Q0,45 0,30Z"
+            fill="url(#cloudGrad)" opacity="0.6"/>
+      <line x1="25" y1="0" x2="45" y2="50" stroke="#d4a574" stroke-width="2" opacity="0.8"/>
+    </g>
+
+    <!-- Broken cloud 2 - top right, falling -->
+    <g transform="translate(620, 60) rotate(20)">
+      <path d="M0,25 Q0,12 12,12 Q12,0 28,0 Q44,0 44,12 Q56,12 56,25 Q56,38 44,38 L12,38 Q0,38 0,25Z"
+            fill="url(#cloudGrad)" opacity="0.5"/>
+      <line x1="20" y1="-5" x2="36" y2="45" stroke="#d4a574" stroke-width="2" opacity="0.7"/>
+    </g>
+
+    <!-- Broken cloud 3 - bottom left -->
+    <g transform="translate(80, 280) rotate(-25)">
+      <path d="M0,20 Q0,10 10,10 Q10,0 23,0 Q36,0 36,10 Q46,10 46,20 Q46,30 36,30 L10,30 Q0,30 0,20Z"
+            fill="url(#cloudGrad)" opacity="0.4"/>
+      <line x1="15" y1="-3" x2="30" y2="35" stroke="#d4a574" stroke-width="1.5" opacity="0.6"/>
+    </g>
+
+    <!-- Broken cloud 4 - bottom right -->
+    <g transform="translate(680, 300) rotate(10)">
+      <path d="M0,18 Q0,9 9,9 Q9,0 21,0 Q33,0 33,9 Q42,9 42,18 Q42,27 33,27 L9,27 Q0,27 0,18Z"
+            fill="url(#cloudGrad)" opacity="0.35"/>
+      <line x1="14" y1="-2" x2="28" y2="32" stroke="#d4a574" stroke-width="1.5" opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- Dollar signs floating away/dissolving -->
+  <g fill="#2d4a6d" opacity="0.3">
+    <text x="180" y="150" font-family="Georgia, serif" font-size="28" transform="rotate(-20 180 150)">$</text>
+    <text x="600" y="130" font-family="Georgia, serif" font-size="24" transform="rotate(15 600 130)">$</text>
+    <text x="160" y="320" font-family="Georgia, serif" font-size="20" transform="rotate(-10 160 320)">$</text>
+    <text x="640" y="340" font-family="Georgia, serif" font-size="22" transform="rotate(25 640 340)">$</text>
+  </g>
+
+  <!-- Main text: SaaS with strikethrough -->
+  <g transform="translate(400, 200)" filter="url(#shadow)">
+    <!-- SaaS text - faded -->
+    <text x="0" y="20"
+          font-family="'Outfit', sans-serif"
+          font-size="120"
+          font-weight="600"
+          fill="#2d4a6d"
+          text-anchor="middle"
+          opacity="0.7">SaaS</text>
+
+    <!-- Strike through with glow -->
+    <line x1="-180" y1="5" x2="180" y2="5"
+          stroke="url(#strikeGrad)"
+          stroke-width="8"
+          stroke-linecap="round"
+          filter="url(#glow)"/>
+
+    <!-- Second strike line for emphasis -->
+    <line x1="-170" y1="5" x2="170" y2="5"
+          stroke="#d4a574"
+          stroke-width="3"
+          stroke-linecap="round"
+          opacity="0.9"/>
+  </g>
+
+  <!-- "NO MORE" text above -->
+  <text x="400" y="100"
+        font-family="'Outfit', sans-serif"
+        font-size="32"
+        font-weight="300"
+        fill="#a8c5d8"
+        text-anchor="middle"
+        letter-spacing="8"
+        opacity="0.9">NO MORE</text>
+
+  <!-- Tagline below -->
+  <text x="400" y="290"
+        font-family="'Cormorant Garamond', Georgia, serif"
+        font-size="24"
+        font-style="italic"
+        fill="#a8c5d8"
+        text-anchor="middle"
+        opacity="0.8">Build what you need. Own what you build.</text>
+
+  <!-- Cost comparison -->
+  <g transform="translate(400, 340)">
+    <text x="-100" y="0"
+          font-family="'Outfit', sans-serif"
+          font-size="18"
+          fill="#d4a574"
+          text-anchor="middle"
+          opacity="0.7">$250/mo</text>
+    <text x="0" y="0"
+          font-family="'Outfit', sans-serif"
+          font-size="24"
+          fill="#a8c5d8"
+          text-anchor="middle">→</text>
+    <text x="100" y="0"
+          font-family="'Outfit', sans-serif"
+          font-size="18"
+          font-weight="600"
+          fill="#d4a574"
+          text-anchor="middle"
+          filter="url(#glow)">$2.50/mo</text>
+  </g>
+
+  <!-- Decorative corner accents -->
+  <g stroke="#a8c5d8" stroke-width="1" fill="none" opacity="0.2">
+    <path d="M30,30 L30,60 M30,30 L60,30"/>
+    <path d="M770,30 L770,60 M770,30 L740,30"/>
+    <path d="M30,370 L30,340 M30,370 L60,370"/>
+    <path d="M770,370 L770,340 M770,370 L740,370"/>
+  </g>
+
+  <!-- Subtle particles -->
+  <g fill="#d4a574" opacity="0.4">
+    <circle cx="250" cy="180" r="2">
+      <animate attributeName="opacity" values="0.4;0.1;0.4" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="550" cy="160" r="1.5">
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="300" cy="260" r="1.5">
+      <animate attributeName="opacity" values="0.4;0.2;0.4" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="500" cy="250" r="2">
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
