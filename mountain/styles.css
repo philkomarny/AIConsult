@@ -1106,6 +1106,7 @@ body {
     border-radius: 4px;
     overflow: hidden;
     max-width: 900px;
+    margin-top: 4rem;
     margin-bottom: 4rem;
     opacity: 0;
     animation: fadeSlideUp 1s ease 1s forwards;
@@ -1173,7 +1174,8 @@ body {
 
 /* Featured Article on Homepage */
 .featured-article {
-    margin-bottom: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
     max-width: 900px;
     opacity: 0;
     animation: fadeSlideUp 1s ease 1.1s forwards;
@@ -1216,6 +1218,13 @@ body {
     font-size: 1rem;
     font-style: italic;
     color: var(--ice);
+}
+
+.footer-elevation {
+    font-size: 0.55rem;
+    color: var(--text-dim);
+    opacity: 0.3;
+    margin-top: 0.25rem;
 }
 
 /* Animations */
