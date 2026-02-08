@@ -77,17 +77,17 @@ Type <span class="clickable-cmd" data-cmd="history">history</span> for career ti
         },
 
         history: () => {
-            let output = '\n<span class="highlight">Career Timeline</span>\n\n';
+            let result = '\n<span class="highlight">Career Timeline</span>\n\n';
             history.forEach(h => {
-                output += `<span class="highlight">${h.year}</span>  ${h.role}\n`;
-                output += `           ${h.company}\n`;
-                output += `           <span class="dim">${h.note}</span>\n\n`;
+                result += `<span class="highlight">${h.year}</span>  ${h.role}\n`;
+                result += `           ${h.company}\n`;
+                result += `           <span class="dim">${h.note}</span>\n\n`;
             });
-            output += `<span class="dim">There's more. A lot more. But you get the idea —
+            result += `<span class="dim">There's more. A lot more. But you get the idea —
 I've been doing this since before most AI models were born.</span>
 
 <span class="link" data-url="https://www.linkedin.com/in/philkomarny/">→ LinkedIn for the full archaeology</span>`;
-            return output;
+            return result;
         },
 
         thoughts: () => {
