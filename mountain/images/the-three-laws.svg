@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="50%" style="stop-color:#1a3a5c"/>
+      <stop offset="100%" style="stop-color:#152538"/>
+    </linearGradient>
+
+    <linearGradient id="glowGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0"/>
+    </linearGradient>
+
+    <linearGradient id="lawGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a8c5d8;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0.6"/>
+    </linearGradient>
+
+    <linearGradient id="lawGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0.6"/>
+    </linearGradient>
+
+    <linearGradient id="lawGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c27ba0;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0.5"/>
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="bigGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1" fill="#a8c5d8" opacity="0.1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  <rect width="800" height="400" fill="url(#grid)"/>
+
+  <!-- Atmospheric glow at convergence -->
+  <ellipse cx="620" cy="200" rx="140" ry="120" fill="url(#glowGrad)" opacity="0.4"/>
+
+  <!-- Convergence point -->
+  <g transform="translate(620, 200)">
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#d4a574" stroke-width="1" opacity="0.2">
+      <animate attributeName="r" values="40;48;40" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="24" fill="none" stroke="#d4a574" stroke-width="1.5" opacity="0.4">
+      <animate attributeName="r" values="24;28;24" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="12" fill="#0a1628" stroke="#d4a574" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="6" fill="#d4a574" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- LAW 1: Digitize — top arc -->
+  <path d="M80,100 Q200,80 320,95 Q450,115 560,175 Q590,188 608,196"
+        stroke="url(#lawGrad1)" stroke-width="3" fill="none" filter="url(#softGlow)"
+        stroke-linecap="round" stroke-dasharray="8,5" opacity="0.8">
+    <animate attributeName="stroke-dashoffset" values="0;-26" dur="2.5s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Origin node 1 -->
+  <g transform="translate(80, 100)">
+    <circle cx="0" cy="0" r="10" fill="#0a1628" stroke="#a8c5d8" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="5" fill="#a8c5d8" opacity="0.8"/>
+  </g>
+
+  <!-- Label 1 -->
+  <text x="100" y="88" font-family="'Outfit', sans-serif" font-size="13" font-weight="400" fill="#a8c5d8" opacity="0.6" letter-spacing="1">digitize</text>
+  <text x="100" y="120" font-family="'Cormorant Garamond', serif" font-size="11" font-style="italic" fill="#a8c5d8" opacity="0.3">if not by you...</text>
+
+  <!-- Midpoint nodes Law 1 -->
+  <circle cx="240" cy="88" r="4" fill="#0a1628" stroke="#a8c5d8" stroke-width="1" filter="url(#glow)"/>
+  <circle cx="240" cy="88" r="2" fill="#a8c5d8" opacity="0.5"/>
+  <circle cx="420" cy="108" r="4" fill="#0a1628" stroke="#a8c5d8" stroke-width="1" filter="url(#glow)"/>
+  <circle cx="420" cy="108" r="2" fill="#a8c5d8" opacity="0.5">
+    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- LAW 2: Quantize — middle arc -->
+  <path d="M80,200 Q200,200 320,200 Q450,200 560,200 Q590,200 608,200"
+        stroke="url(#lawGrad2)" stroke-width="3" fill="none" filter="url(#softGlow)"
+        stroke-linecap="round" stroke-dasharray="8,5" opacity="0.8">
+    <animate attributeName="stroke-dashoffset" values="0;-26" dur="3s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Origin node 2 -->
+  <g transform="translate(80, 200)">
+    <circle cx="0" cy="0" r="10" fill="#0a1628" stroke="#d4a574" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="5" fill="#d4a574" opacity="0.8"/>
+  </g>
+
+  <!-- Label 2 -->
+  <text x="100" y="188" font-family="'Outfit', sans-serif" font-size="13" font-weight="400" fill="#d4a574" opacity="0.6" letter-spacing="1">quantize</text>
+  <text x="100" y="220" font-family="'Cormorant Garamond', serif" font-size="11" font-style="italic" fill="#d4a574" opacity="0.3">if not by you...</text>
+
+  <!-- Midpoint nodes Law 2 -->
+  <circle cx="240" cy="200" r="4" fill="#0a1628" stroke="#d4a574" stroke-width="1" filter="url(#glow)"/>
+  <circle cx="240" cy="200" r="2" fill="#d4a574" opacity="0.5"/>
+  <circle cx="420" cy="200" r="4" fill="#0a1628" stroke="#d4a574" stroke-width="1" filter="url(#glow)"/>
+  <circle cx="420" cy="200" r="2" fill="#d4a574" opacity="0.5">
+    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- LAW 3: Route around — bottom arc -->
+  <path d="M80,300 Q200,320 320,305 Q450,285 560,225 Q590,212 608,204"
+        stroke="url(#lawGrad3)" stroke-width="3" fill="none" filter="url(#softGlow)"
+        stroke-linecap="round" stroke-dasharray="8,5" opacity="0.7">
+    <animate attributeName="stroke-dashoffset" values="0;-26" dur="3.5s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Origin node 3 -->
+  <g transform="translate(80, 300)">
+    <circle cx="0" cy="0" r="10" fill="#0a1628" stroke="#c27ba0" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="5" fill="#c27ba0" opacity="0.7"/>
+  </g>
+
+  <!-- Label 3 -->
+  <text x="100" y="296" font-family="'Outfit', sans-serif" font-size="13" font-weight="400" fill="#c27ba0" opacity="0.5" letter-spacing="1">route around</text>
+  <text x="100" y="320" font-family="'Cormorant Garamond', serif" font-size="11" font-style="italic" fill="#c27ba0" opacity="0.3">if not by you...</text>
+
+  <!-- Midpoint nodes Law 3 -->
+  <circle cx="240" cy="312" r="4" fill="#0a1628" stroke="#c27ba0" stroke-width="1" filter="url(#glow)"/>
+  <circle cx="240" cy="312" r="2" fill="#c27ba0" opacity="0.4"/>
+  <circle cx="420" cy="292" r="4" fill="#0a1628" stroke="#c27ba0" stroke-width="1" filter="url(#glow)"/>
+  <circle cx="420" cy="292" r="2" fill="#c27ba0" opacity="0.4">
+    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="4s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Convergence label -->
+  <text x="620" y="260" font-family="'Outfit', sans-serif" font-size="11" font-weight="300" fill="#d4a574" opacity="0.35" text-anchor="middle" letter-spacing="2">equivalence</text>
+
+  <!-- Floating ambient particles -->
+  <g fill="#a8c5d8" opacity="0.3">
+    <circle cx="700" cy="80" r="2">
+      <animate attributeName="cy" values="80;70;80" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="50" cy="50" r="1.5">
+      <animate attributeName="cy" values="50;42;50" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="750" cy="350" r="1.5">
+      <animate attributeName="cy" values="350;342;350" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <g fill="#d4a574" opacity="0.25">
+    <circle cx="350" cy="50" r="1.5">
+      <animate attributeName="opacity" values="0.25;0.1;0.25" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="500" cy="360" r="2">
+      <animate attributeName="opacity" values="0.25;0.1;0.25" dur="4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Decorative corner accents -->
+  <g stroke="#a8c5d8" stroke-width="1" fill="none" opacity="0.15">
+    <path d="M25,25 L25,55 M25,25 L55,25"/>
+    <path d="M775,25 L775,55 M775,25 L745,25"/>
+    <path d="M25,375 L25,345 M25,375 L55,375"/>
+    <path d="M775,375 L775,345 M775,375 L745,375"/>
+  </g>
+</svg>
