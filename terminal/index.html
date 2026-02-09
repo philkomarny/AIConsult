@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>phil@crestedbutte</title>
+    <meta name="description" content="Phil Komarny — interactive terminal portfolio. AI strategist and technology consultant in Crested Butte, CO.">
+    <meta property="og:title" content="phil@crestedbutte">
+    <meta property="og:description" content="Interactive terminal portfolio. AI strategist and technology consultant.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" type="image/png" href="../mountain/images/mtlogo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -13,8 +19,9 @@
     <div class="crt-overlay"></div>
     <div class="scanlines"></div>
 
-    <main class="terminal">
-        <div class="terminal-header">
+    <main class="terminal" role="application" aria-label="Interactive terminal portfolio">
+        <h1 class="sr-only">Phil Komarny — Interactive Terminal Portfolio</h1>
+        <div class="terminal-header" aria-hidden="true">
             <div class="terminal-buttons">
                 <span class="btn-close"></span>
                 <span class="btn-minimize"></span>
@@ -24,11 +31,12 @@
         </div>
 
         <div class="terminal-body" id="terminal">
-            <div class="output" id="output"></div>
+            <div class="output" id="output" role="log" aria-live="polite" aria-label="Terminal output"></div>
             <div class="input-line">
-                <span class="prompt">phil@crestedbutte ~ %</span>
-                <input type="text" id="input" class="command-input" autofocus autocomplete="off" spellcheck="false">
-                <span class="cursor"></span>
+                <label for="input" class="sr-only">Terminal command input</label>
+                <span class="prompt" aria-hidden="true">phil@crestedbutte ~ %</span>
+                <input type="text" id="input" class="command-input" autofocus autocomplete="off" spellcheck="false" aria-label="Enter a command (type help for options)">
+                <span class="cursor" aria-hidden="true"></span>
             </div>
         </div>
     </main>

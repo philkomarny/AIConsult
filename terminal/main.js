@@ -16,7 +16,7 @@
         previous: 'Salesforce (VP Innovation), UT System (CDO), Robots & Pencils (CEO)',
         location: 'Crested Butte, CO',
         status: 'Making AI useful since before it was cool',
-        email: 'phil@example.com'
+        email: 'phil@komarny.com'
     };
 
     const history = [
@@ -77,17 +77,17 @@ Type <span class="clickable-cmd" data-cmd="history">history</span> for career ti
         },
 
         history: () => {
-            let output = '\n<span class="highlight">Career Timeline</span>\n\n';
+            let result = '\n<span class="highlight">Career Timeline</span>\n\n';
             history.forEach(h => {
-                output += `<span class="highlight">${h.year}</span>  ${h.role}\n`;
-                output += `           ${h.company}\n`;
-                output += `           <span class="dim">${h.note}</span>\n\n`;
+                result += `<span class="highlight">${h.year}</span>  ${h.role}\n`;
+                result += `           ${h.company}\n`;
+                result += `           <span class="dim">${h.note}</span>\n\n`;
             });
-            output += `<span class="dim">There's more. A lot more. But you get the idea —
+            result += `<span class="dim">There's more. A lot more. But you get the idea —
 I've been doing this since before most AI models were born.</span>
 
 <span class="link" data-url="https://www.linkedin.com/in/philkomarny/">→ LinkedIn for the full archaeology</span>`;
-            return output;
+            return result;
         },
 
         thoughts: () => {
@@ -222,12 +222,21 @@ makes sense for your situation? Pick your poison:
         });
     }
 
+    // Escape HTML to prevent XSS
+    function escapeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
     // Execute a command
     function executeCommand(cmd) {
         const trimmedCmd = cmd.trim().toLowerCase();
+        const safeCmd = escapeHTML(cmd);
+        const safeTrimmedCmd = escapeHTML(trimmedCmd);
 
         // Show the command that was entered
-        appendOutput(`<span class="prompt-display">phil@crestedbutte ~ %</span> <span class="command">${cmd}</span>`);
+        appendOutput(`<span class="prompt-display">phil@crestedbutte ~ %</span> <span class="command">${safeCmd}</span>`);
 
         // Find and execute command
         let result = null;
@@ -236,7 +245,7 @@ makes sense for your situation? Pick your poison:
         } else if (trimmedCmd.startsWith('rm ')) {
             result = commands['rm -rf']();
         } else if (trimmedCmd) {
-            result = `<span class="error">zsh: command not found: ${trimmedCmd}</span>\nType <span class="clickable-cmd" data-cmd="help">help</span> for available commands.`;
+            result = `<span class="error">zsh: command not found: ${safeTrimmedCmd}</span>\nType <span class="clickable-cmd" data-cmd="help">help</span> for available commands.`;
         }
 
         if (result !== null) {
