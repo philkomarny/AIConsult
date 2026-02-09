@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="50%" style="stop-color:#1a3a5c"/>
+      <stop offset="100%" style="stop-color:#152538"/>
+    </linearGradient>
+
+    <linearGradient id="carGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a8c5d8;stop-opacity:0.3"/>
+      <stop offset="50%" style="stop-color:#d4a574;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0.4"/>
+    </linearGradient>
+
+    <linearGradient id="glowGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0"/>
+    </linearGradient>
+
+    <linearGradient id="timelineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a8c5d8;stop-opacity:0.2"/>
+      <stop offset="50%" style="stop-color:#d4a574;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0.3"/>
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="0.8" fill="#a8c5d8" opacity="0.12"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGrad)"/>
+  <rect width="400" height="300" fill="url(#grid)"/>
+
+  <!-- Central glow -->
+  <ellipse cx="200" cy="155" rx="120" ry="80" fill="url(#glowGrad)" opacity="0.4"/>
+
+  <!-- Timeline axis -->
+  <line x1="40" y1="200" x2="360" y2="200" stroke="url(#timelineGrad)" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Timeline tick marks — decades of refinement -->
+  <g stroke="#a8c5d8" stroke-width="1" opacity="0.3">
+    <line x1="60" y1="195" x2="60" y2="205"/>
+    <line x1="110" y1="195" x2="110" y2="205"/>
+    <line x1="160" y1="195" x2="160" y2="205"/>
+    <line x1="210" y1="195" x2="210" y2="205"/>
+    <line x1="260" y1="195" x2="260" y2="205"/>
+    <line x1="310" y1="195" x2="310" y2="205"/>
+    <line x1="355" y1="195" x2="355" y2="205"/>
+  </g>
+
+  <!-- Refinement curve — ascending, smooth -->
+  <path d="M60,185 Q110,182 160,175 Q210,165 260,148 Q310,128 355,100"
+        stroke="#d4a574" stroke-width="2" fill="none" filter="url(#glow)" opacity="0.7"
+        stroke-dasharray="6,3">
+    <animate attributeName="stroke-dashoffset" values="0;-18" dur="3s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- 911 silhouette — iconic roofline, simplified -->
+  <g transform="translate(130, 105)" opacity="0.9">
+    <!-- Car body silhouette -->
+    <path d="M0,55 L8,55 Q12,55 15,52 L30,42 Q50,28 70,22 L95,18 Q115,16 130,18 L140,20 Q148,22 150,28 L152,35 Q154,42 150,45 L148,48 Q145,52 140,55 L0,55 Z"
+          stroke="url(#carGrad)" stroke-width="2" fill="none" filter="url(#softGlow)"/>
+
+    <!-- Wheels -->
+    <circle cx="35" cy="55" r="8" fill="none" stroke="#d4a574" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="35" cy="55" r="3" fill="#d4a574" opacity="0.4"/>
+    <circle cx="125" cy="55" r="8" fill="none" stroke="#d4a574" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="125" cy="55" r="3" fill="#d4a574" opacity="0.4"/>
+
+    <!-- Headlight glow -->
+    <circle cx="150" cy="40" r="4" fill="#d4a574" opacity="0.5" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Refinement nodes along curve -->
+  <g>
+    <circle cx="110" cy="182" r="4" fill="#0a1628" stroke="#a8c5d8" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="110" cy="182" r="2" fill="#a8c5d8" opacity="0.7"/>
+  </g>
+  <g>
+    <circle cx="210" cy="165" r="4" fill="#0a1628" stroke="#d4a574" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="210" cy="165" r="2" fill="#d4a574" opacity="0.7"/>
+  </g>
+  <g>
+    <circle cx="310" cy="128" r="5" fill="#0a1628" stroke="#d4a574" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="310" cy="128" r="2.5" fill="#d4a574" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.5;0.8" dur="3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  <g>
+    <circle cx="355" cy="100" r="6" fill="#0a1628" stroke="#d4a574" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="355" cy="100" r="3" fill="#d4a574" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.6;0.9" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Ambient particles -->
+  <circle cx="80" cy="80" r="1.5" fill="#a8c5d8" opacity="0.3">
+    <animate attributeName="cy" values="80;72;80" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="340" cy="250" r="1.5" fill="#d4a574" opacity="0.25">
+    <animate attributeName="cy" values="250;258;250" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="50" cy="240" r="1" fill="#a8c5d8" opacity="0.2">
+    <animate attributeName="opacity" values="0.2;0.4;0.2" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+</svg>

@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="50%" style="stop-color:#1a3a5c"/>
+      <stop offset="100%" style="stop-color:#152538"/>
+    </linearGradient>
+
+    <linearGradient id="carGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a8c5d8;stop-opacity:0.4"/>
+      <stop offset="40%" style="stop-color:#d4a574;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0.5"/>
+    </linearGradient>
+
+    <linearGradient id="glowGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0"/>
+    </linearGradient>
+
+    <linearGradient id="timelineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a8c5d8;stop-opacity:0.15"/>
+      <stop offset="30%" style="stop-color:#a8c5d8;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0.6"/>
+    </linearGradient>
+
+    <linearGradient id="refineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a8c5d8;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0.9"/>
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="bigGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1" fill="#a8c5d8" opacity="0.1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  <rect width="800" height="400" fill="url(#grid)"/>
+
+  <!-- Central atmospheric glow -->
+  <ellipse cx="400" cy="200" rx="250" ry="130" fill="url(#glowGrad)" opacity="0.35"/>
+
+  <!-- Timeline axis -->
+  <line x1="60" y1="280" x2="740" y2="280" stroke="url(#timelineGrad)" stroke-width="2" opacity="0.5"/>
+
+  <!-- Timeline tick marks — decades -->
+  <g stroke="#a8c5d8" stroke-width="1" opacity="0.25">
+    <line x1="100" y1="273" x2="100" y2="287"/>
+    <line x1="200" y1="273" x2="200" y2="287"/>
+    <line x1="300" y1="273" x2="300" y2="287"/>
+    <line x1="400" y1="273" x2="400" y2="287"/>
+    <line x1="500" y1="273" x2="500" y2="287"/>
+    <line x1="600" y1="273" x2="600" y2="287"/>
+    <line x1="700" y1="273" x2="700" y2="287"/>
+  </g>
+
+  <!-- Decade labels -->
+  <g font-family="'Outfit', sans-serif" font-size="10" font-weight="300" fill="#a8c5d8" opacity="0.25">
+    <text x="91" y="302">'63</text>
+    <text x="191" y="302">'73</text>
+    <text x="291" y="302">'83</text>
+    <text x="391" y="302">'93</text>
+    <text x="491" y="302">'03</text>
+    <text x="591" y="302">'13</text>
+    <text x="691" y="302">'23</text>
+  </g>
+
+  <!-- Refinement curve — smooth upward ascent -->
+  <path d="M100,260 Q200,255 300,240 Q400,218 500,185 Q600,145 700,95"
+        stroke="url(#refineGrad)" stroke-width="2.5" fill="none" filter="url(#softGlow)" opacity="0.8"
+        stroke-dasharray="8,4">
+    <animate attributeName="stroke-dashoffset" values="0;-24" dur="3s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Flat line — stagnation (higher ed) -->
+  <path d="M100,260 Q300,258 500,256 Q600,255 700,254"
+        stroke="#a8c5d8" stroke-width="1.5" fill="none" opacity="0.25"
+        stroke-dasharray="4,6"/>
+
+  <!-- 911 silhouette — early, ghosted (left) -->
+  <g transform="translate(70, 175)" opacity="0.2">
+    <path d="M0,55 L8,55 Q12,55 15,52 L30,42 Q50,28 70,22 L95,18 Q115,16 130,18 L140,20 Q148,22 150,28 L152,35 Q154,42 150,45 L148,48 Q145,52 140,55 L0,55 Z"
+          stroke="#a8c5d8" stroke-width="1.5" fill="none"/>
+    <circle cx="35" cy="55" r="7" fill="none" stroke="#a8c5d8" stroke-width="1"/>
+    <circle cx="125" cy="55" r="7" fill="none" stroke="#a8c5d8" stroke-width="1"/>
+  </g>
+
+  <!-- 911 silhouette — mid evolution (center) -->
+  <g transform="translate(290, 135)" opacity="0.4">
+    <path d="M0,55 L8,55 Q12,55 15,52 L28,42 Q48,26 68,20 L95,16 Q118,14 135,17 L145,19 Q153,22 155,28 L157,35 Q159,42 155,45 L153,48 Q150,52 145,55 L0,55 Z"
+          stroke="#a8c5d8" stroke-width="1.5" fill="none"/>
+    <circle cx="35" cy="55" r="7" fill="none" stroke="#a8c5d8" stroke-width="1"/>
+    <circle cx="128" cy="55" r="7" fill="none" stroke="#a8c5d8" stroke-width="1"/>
+  </g>
+
+  <!-- 911 silhouette — current, fully realized (right) -->
+  <g transform="translate(520, 75)" opacity="0.9">
+    <path d="M0,55 L8,55 Q12,55 15,52 L26,42 Q45,24 65,18 L95,14 Q120,12 140,15 L152,18 Q160,22 162,28 L164,35 Q166,42 162,45 L160,48 Q157,52 152,55 L0,55 Z"
+          stroke="url(#carGrad)" stroke-width="2.5" fill="none" filter="url(#softGlow)"/>
+
+    <!-- Wheels -->
+    <circle cx="35" cy="55" r="9" fill="none" stroke="#d4a574" stroke-width="2" opacity="0.7"/>
+    <circle cx="35" cy="55" r="4" fill="#d4a574" opacity="0.4"/>
+    <circle cx="132" cy="55" r="9" fill="none" stroke="#d4a574" stroke-width="2" opacity="0.7"/>
+    <circle cx="132" cy="55" r="4" fill="#d4a574" opacity="0.4"/>
+
+    <!-- Headlight glow -->
+    <circle cx="162" cy="38" r="5" fill="#d4a574" opacity="0.6" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Detail lines -->
+    <path d="M95,14 Q100,30 95,45" stroke="#d4a574" stroke-width="0.8" fill="none" opacity="0.3"/>
+  </g>
+
+  <!-- Refinement nodes along curve -->
+  <g>
+    <circle cx="100" cy="260" r="5" fill="#0a1628" stroke="#a8c5d8" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="100" cy="260" r="2.5" fill="#a8c5d8" opacity="0.6"/>
+  </g>
+  <g>
+    <circle cx="200" cy="255" r="5" fill="#0a1628" stroke="#a8c5d8" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="200" cy="255" r="2.5" fill="#a8c5d8" opacity="0.6"/>
+  </g>
+  <g>
+    <circle cx="300" cy="240" r="5" fill="#0a1628" stroke="#d4a574" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="300" cy="240" r="2.5" fill="#d4a574" opacity="0.7"/>
+  </g>
+  <g>
+    <circle cx="400" cy="218" r="6" fill="#0a1628" stroke="#d4a574" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="400" cy="218" r="3" fill="#d4a574" opacity="0.7"/>
+  </g>
+  <g>
+    <circle cx="500" cy="185" r="6" fill="#0a1628" stroke="#d4a574" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="500" cy="185" r="3" fill="#d4a574" opacity="0.8"/>
+  </g>
+  <g>
+    <circle cx="600" cy="145" r="7" fill="#0a1628" stroke="#d4a574" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="600" cy="145" r="3.5" fill="#d4a574" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.5;0.8" dur="3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  <g>
+    <circle cx="700" cy="95" r="8" fill="#0a1628" stroke="#d4a574" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="700" cy="95" r="4" fill="#d4a574" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.6;0.9" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Stagnation nodes (flat line) -->
+  <g>
+    <circle cx="300" cy="258" r="4" fill="#0a1628" stroke="#a8c5d8" stroke-width="1" opacity="0.3"/>
+    <circle cx="300" cy="258" r="2" fill="#a8c5d8" opacity="0.2"/>
+  </g>
+  <g>
+    <circle cx="500" cy="256" r="4" fill="#0a1628" stroke="#a8c5d8" stroke-width="1" opacity="0.3"/>
+    <circle cx="500" cy="256" r="2" fill="#a8c5d8" opacity="0.2"/>
+  </g>
+  <g>
+    <circle cx="700" cy="254" r="4" fill="#0a1628" stroke="#a8c5d8" stroke-width="1" opacity="0.3"/>
+    <circle cx="700" cy="254" r="2" fill="#a8c5d8" opacity="0.2"/>
+  </g>
+
+  <!-- Subtle label -->
+  <text x="710" y="270"
+        font-family="'Outfit', sans-serif"
+        font-size="11"
+        font-weight="300"
+        fill="#a8c5d8"
+        opacity="0.2"
+        text-anchor="end"
+        letter-spacing="1.5">preservation</text>
+
+  <text x="710" y="88"
+        font-family="'Outfit', sans-serif"
+        font-size="11"
+        font-weight="300"
+        fill="#d4a574"
+        opacity="0.3"
+        text-anchor="start"
+        letter-spacing="1.5">refinement</text>
+
+  <!-- Floating ambient particles -->
+  <g fill="#a8c5d8" opacity="0.3">
+    <circle cx="150" cy="80" r="2">
+      <animate attributeName="cy" values="80;70;80" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="750" cy="170" r="1.5">
+      <animate attributeName="cy" values="170;160;170" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="50" cy="340" r="1.5">
+      <animate attributeName="cy" values="340;332;340" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <g fill="#d4a574" opacity="0.25">
+    <circle cx="450" cy="50" r="1.5">
+      <animate attributeName="opacity" values="0.25;0.1;0.25" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="760" cy="350" r="2">
+      <animate attributeName="opacity" values="0.25;0.1;0.25" dur="4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Decorative corner accents -->
+  <g stroke="#a8c5d8" stroke-width="1" fill="none" opacity="0.15">
+    <path d="M25,25 L25,55 M25,25 L55,25"/>
+    <path d="M775,25 L775,55 M775,25 L745,25"/>
+    <path d="M25,375 L25,345 M25,375 L55,375"/>
+    <path d="M775,375 L775,345 M775,375 L745,375"/>
+  </g>
+</svg>
