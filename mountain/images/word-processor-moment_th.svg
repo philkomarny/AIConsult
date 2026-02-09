@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="50%" style="stop-color:#1a3a5c"/>
+      <stop offset="100%" style="stop-color:#152538"/>
+    </linearGradient>
+
+    <linearGradient id="blockGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d4a6d"/>
+      <stop offset="100%" style="stop-color:#1e3550"/>
+    </linearGradient>
+
+    <linearGradient id="pathGlowRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0.2"/>
+    </linearGradient>
+
+    <linearGradient id="crackGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574"/>
+      <stop offset="50%" style="stop-color:#a8c5d8"/>
+      <stop offset="100%" style="stop-color:#d4a574"/>
+    </linearGradient>
+
+    <linearGradient id="glowGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Grid pattern -->
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="0.8" fill="#a8c5d8" opacity="0.12"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGrad)"/>
+  <rect width="400" height="300" fill="url(#grid)"/>
+
+  <!-- Central glow -->
+  <ellipse cx="200" cy="150" rx="100" ry="90" fill="url(#glowGrad)" opacity="0.4"/>
+
+  <!-- LEFT: Rigid institution block -->
+  <g transform="translate(30, 65)" opacity="0.7">
+    <rect x="0" y="30" width="100" height="160" fill="url(#blockGrad)" rx="2" opacity="0.8"/>
+    <rect x="8" y="38" width="84" height="144" fill="#0a1628" rx="1" opacity="0.4"/>
+
+    <!-- Grid lines (rigid structure) -->
+    <line x1="15" y1="60" x2="85" y2="60" stroke="#2d4a6d" stroke-width="1" opacity="0.5"/>
+    <line x1="15" y1="95" x2="85" y2="95" stroke="#2d4a6d" stroke-width="1" opacity="0.5"/>
+    <line x1="15" y1="130" x2="85" y2="130" stroke="#2d4a6d" stroke-width="1" opacity="0.5"/>
+    <line x1="15" y1="165" x2="85" y2="165" stroke="#2d4a6d" stroke-width="1" opacity="0.4"/>
+    <line x1="50" y1="38" x2="50" y2="182" stroke="#2d4a6d" stroke-width="1" opacity="0.4"/>
+
+    <!-- Pediment -->
+    <path d="M-3,30 L50,0 L103,30" fill="url(#blockGrad)" opacity="0.9"/>
+
+    <!-- Cracks -->
+    <path d="M50 30 L45 65 L55 95 L42 130 L52 170"
+          stroke="url(#crackGlow)" stroke-width="2" fill="none" filter="url(#glow)" opacity="0.7"/>
+    <path d="M75 50 L80 80 L70 110"
+          stroke="#d4a574" stroke-width="1" fill="none" filter="url(#glow)" opacity="0.4"/>
+
+    <!-- Fragment -->
+    <rect x="88" y="100" width="14" height="20" fill="#2d4a6d" transform="rotate(18 95 110)" opacity="0.4"/>
+  </g>
+
+  <!-- Dissolution particles -->
+  <circle cx="145" cy="120" r="2.5" fill="#a8c5d8" opacity="0.4">
+    <animate attributeName="cx" values="145;170;195" dur="3.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0.2;0" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="140" cy="160" r="2" fill="#d4a574" opacity="0.4">
+    <animate attributeName="cx" values="140;165;190" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.4;0.2;0" dur="4s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- CENTRAL FORK: Transformation nexus -->
+  <g transform="translate(200, 150)">
+    <!-- Outer ring -->
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#a8c5d8" stroke-width="1" opacity="0.25">
+      <animate attributeName="r" values="30;36;30" dur="4s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Middle ring -->
+    <circle cx="0" cy="0" r="18" fill="none" stroke="#d4a574" stroke-width="1.5" opacity="0.5">
+      <animate attributeName="r" values="18;22;18" dur="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Core -->
+    <circle cx="0" cy="0" r="8" fill="#0a1628" stroke="#d4a574" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="4" fill="#d4a574" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Orbiting node -->
+    <g>
+      <circle cx="22" cy="0" r="3" fill="#a8c5d8" filter="url(#glow)">
+        <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="7s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+
+  <!-- LEFT PATH to old structure -->
+  <path d="M182,150 Q160,150 135,150"
+        stroke="#a8c5d8" stroke-width="2" fill="none" opacity="0.3"
+        stroke-dasharray="5,4">
+    <animate attributeName="stroke-dashoffset" values="0;18" dur="3s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- RIGHT: Flowing adaptive pathways -->
+
+  <!-- Upper branch -->
+  <path d="M218,143 Q260,120 300,90 Q330,70 360,55"
+        stroke="url(#pathGlowRight)" stroke-width="2.5" fill="none" filter="url(#softGlow)"
+        stroke-linecap="round" stroke-dasharray="6,4" opacity="0.8">
+    <animate attributeName="stroke-dashoffset" values="0;-20" dur="2s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Middle branch -->
+  <path d="M220,153 Q265,160 310,165 Q345,170 375,165"
+        stroke="url(#pathGlowRight)" stroke-width="2" fill="none" filter="url(#softGlow)"
+        stroke-linecap="round" stroke-dasharray="6,4" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" values="0;-20" dur="2.5s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Lower branch -->
+  <path d="M215,162 Q255,195 295,225 Q325,245 360,255"
+        stroke="url(#pathGlowRight)" stroke-width="2" fill="none" filter="url(#softGlow)"
+        stroke-linecap="round" stroke-dasharray="6,4" opacity="0.5">
+    <animate attributeName="stroke-dashoffset" values="0;-20" dur="3s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Nodes along pathways -->
+  <!-- Upper node -->
+  <g transform="translate(300, 90)">
+    <circle cx="0" cy="0" r="6" fill="#0a1628" stroke="#d4a574" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="3" fill="#d4a574" opacity="0.9"/>
+  </g>
+
+  <!-- Upper destination -->
+  <g transform="translate(360, 55)">
+    <circle cx="0" cy="0" r="5" fill="#0a1628" stroke="#d4a574" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="2.5" fill="#d4a574" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.5;0.8" dur="3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Middle node -->
+  <g transform="translate(310, 165)">
+    <circle cx="0" cy="0" r="5" fill="#0a1628" stroke="#a8c5d8" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="2.5" fill="#a8c5d8" opacity="0.8"/>
+  </g>
+
+  <!-- Lower node -->
+  <g transform="translate(295, 225)">
+    <circle cx="0" cy="0" r="5" fill="#0a1628" stroke="#a8c5d8" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="2.5" fill="#a8c5d8" opacity="0.8"/>
+  </g>
+
+  <!-- Connection between nodes -->
+  <path d="M305,92 Q320,130 312,162" stroke="#a8c5d8" stroke-width="1" fill="none" opacity="0.2"/>
+  <path d="M362,58 Q370,110 375,162" stroke="#d4a574" stroke-width="1" fill="none" opacity="0.15"/>
+
+  <!-- Ambient particles -->
+  <circle cx="80" cy="50" r="1.5" fill="#a8c5d8" opacity="0.3">
+    <animate attributeName="cy" values="50;42;50" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="340" cy="270" r="1.5" fill="#d4a574" opacity="0.25">
+    <animate attributeName="cy" values="270;278;270" dur="5s" repeatCount="indefinite"/>
+  </circle>
+</svg>
