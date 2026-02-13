@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="50%" style="stop-color:#1a3a5c"/>
+      <stop offset="100%" style="stop-color:#152538"/>
+    </linearGradient>
+
+    <linearGradient id="bridgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a8c5d8;stop-opacity:0.7"/>
+      <stop offset="50%" style="stop-color:#d4a574;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#c27ba0;stop-opacity:0.7"/>
+    </linearGradient>
+
+    <linearGradient id="glowCenter" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0"/>
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="0.8" fill="#a8c5d8" opacity="0.12"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGrad)"/>
+  <rect width="400" height="300" fill="url(#grid)"/>
+
+  <!-- Center glow -->
+  <ellipse cx="200" cy="150" rx="80" ry="70" fill="url(#glowCenter)" opacity="0.5"/>
+
+  <!-- Left nodes (tech) -->
+  <circle cx="50" cy="80" r="4" fill="#a8c5d8" opacity="0.5">
+    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="70" cy="150" r="3.5" fill="#a8c5d8" opacity="0.45">
+    <animate attributeName="opacity" values="0.45;0.75;0.45" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="55" cy="220" r="3" fill="#a8c5d8" opacity="0.4">
+    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="4s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Right nodes (sacred) -->
+  <circle cx="350" cy="80" r="4" fill="#c27ba0" opacity="0.5">
+    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3.2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="330" cy="150" r="3.5" fill="#c27ba0" opacity="0.45">
+    <animate attributeName="opacity" values="0.45;0.75;0.45" dur="3.8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="345" cy="220" r="3" fill="#c27ba0" opacity="0.4">
+    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="4.2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Bridge paths -->
+  <path d="M50,80 Q130,100 200,135 Q270,100 350,80"
+        stroke="url(#bridgeGrad)" stroke-width="1.5" fill="none" filter="url(#softGlow)"
+        stroke-dasharray="5,5" opacity="0.4">
+    <animate attributeName="stroke-dashoffset" values="0;-20" dur="3.5s" repeatCount="indefinite"/>
+  </path>
+  <path d="M70,150 Q140,150 200,148 Q260,150 330,150"
+        stroke="url(#bridgeGrad)" stroke-width="2" fill="none" filter="url(#softGlow)"
+        stroke-dasharray="5,5" opacity="0.5">
+    <animate attributeName="stroke-dashoffset" values="0;-20" dur="3s" repeatCount="indefinite"/>
+  </path>
+  <path d="M55,220 Q130,200 200,162 Q270,200 345,220"
+        stroke="url(#bridgeGrad)" stroke-width="1.5" fill="none" filter="url(#softGlow)"
+        stroke-dasharray="5,5" opacity="0.4">
+    <animate attributeName="stroke-dashoffset" values="0;-20" dur="4s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Center convergence: the nod -->
+  <circle cx="200" cy="150" r="14" fill="#0a1628" stroke="#d4a574" stroke-width="2" filter="url(#glow)"/>
+  <circle cx="200" cy="150" r="7" fill="#d4a574" opacity="0.85">
+    <animate attributeName="opacity" values="0.85;0.5;0.85" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Ambient particles -->
+  <circle cx="150" cy="60" r="1.5" fill="#d4a574" opacity="0.2">
+    <animate attributeName="cy" values="60;53;60" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="260" cy="240" r="1.5" fill="#d4a574" opacity="0.2">
+    <animate attributeName="cy" values="240;247;240" dur="4s" repeatCount="indefinite"/>
+  </circle>
+</svg>
