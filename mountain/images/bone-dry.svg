@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <!-- Sky gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="40%" style="stop-color:#1a2d4a"/>
+      <stop offset="100%" style="stop-color:#0f1e35"/>
+    </linearGradient>
+
+    <!-- Exposed rock face -->
+    <linearGradient id="rockGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b7355"/>
+      <stop offset="40%" style="stop-color:#6d5a3f"/>
+      <stop offset="100%" style="stop-color:#4a3d2b"/>
+    </linearGradient>
+
+    <!-- Secondary rock for depth -->
+    <linearGradient id="rockShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5c4a32"/>
+      <stop offset="100%" style="stop-color:#3d3022"/>
+    </linearGradient>
+
+    <!-- Thin snow remnants -->
+    <linearGradient id="snowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8e8e8;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:#c8d0d8;stop-opacity:0.08"/>
+    </linearGradient>
+
+    <!-- Far mountain range tint -->
+    <linearGradient id="farMtnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3550"/>
+      <stop offset="100%" style="stop-color:#152538"/>
+    </linearGradient>
+
+    <!-- Faint warm glow behind the Butte -->
+    <radialGradient id="dawnGlow" cx="50%" cy="60%" r="40%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Water stream -->
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.1"/>
+      <stop offset="30%" style="stop-color:#4facfe;stop-opacity:0.5"/>
+      <stop offset="70%" style="stop-color:#4facfe;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#4facfe;stop-opacity:0.1"/>
+    </linearGradient>
+
+    <!-- Foreground hill -->
+    <linearGradient id="fgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a2d44"/>
+      <stop offset="100%" style="stop-color:#0f1e30"/>
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="starGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="0.8" fill="#a8c5d8" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <!-- Background sky -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  <rect width="800" height="400" fill="url(#grid)"/>
+
+  <!-- Stars -->
+  <g fill="#fff" opacity="0.6">
+    <circle cx="80" cy="30" r="1.3" filter="url(#starGlow)"/>
+    <circle cx="190" cy="55" r="0.9" filter="url(#starGlow)"/>
+    <circle cx="145" cy="18" r="1.1" filter="url(#starGlow)"/>
+    <circle cx="310" cy="25" r="0.7" filter="url(#starGlow)"/>
+    <circle cx="480" cy="40" r="1.4" filter="url(#starGlow)"/>
+    <circle cx="560" cy="22" r="0.8" filter="url(#starGlow)"/>
+    <circle cx="640" cy="50" r="1.0" filter="url(#starGlow)"/>
+    <circle cx="720" cy="30" r="1.2" filter="url(#starGlow)"/>
+    <circle cx="750" cy="65" r="0.7" filter="url(#starGlow)"/>
+    <circle cx="50" cy="70" r="0.8" filter="url(#starGlow)"/>
+    <circle cx="430" cy="15" r="1.0" filter="url(#starGlow)"/>
+    <circle cx="280" cy="60" r="0.6" filter="url(#starGlow)"/>
+  </g>
+
+  <!-- Faint warm glow behind the Butte -->
+  <ellipse cx="400" cy="180" rx="280" ry="160" fill="url(#dawnGlow)"/>
+
+  <!-- Far mountain range - distant backdrop -->
+  <path d="M0,400 L0,290 L50,270 L100,285 L170,240 L230,260 L280,230 L340,255 L400,220 L460,245 L520,215 L580,235 L640,210 L700,230 L760,205 L800,225 L800,400 Z"
+        fill="url(#farMtnGrad)" opacity="0.5"/>
+
+  <!-- MT. CRESTED BUTTE — the distinctive jagged comb ridgeline -->
+  <!-- Main mass of the Butte - exposed rock -->
+  <path d="M220,400 L220,310 L250,285 L275,260 L290,240
+           L305,225 L315,195 L325,175
+           L338,160 L345,135 L355,118
+           L365,105 L372,90 L380,78
+           L388,72 L395,80 L400,68
+           L405,75 L412,72 L418,82
+           L425,90 L432,105 L438,118
+           L448,130 L458,148
+           L470,168 L478,185
+           L490,205 L500,225
+           L515,245 L530,262
+           L548,278 L570,295 L590,310
+           L590,400 Z"
+        fill="url(#rockGrad)" opacity="0.9"/>
+
+  <!-- Crested Butte spires — the rooster's comb teeth along the ridgeline -->
+  <!-- Spire 1 - leftmost -->
+  <path d="M338,160 L345,135 L350,125 L355,118 L358,128 L355,142 L348,158 Z"
+        fill="#7a6545" opacity="0.95"/>
+  <!-- Spire 2 -->
+  <path d="M355,118 L362,100 L368,92 L372,90 L375,95 L370,112 L362,128 Z"
+        fill="#8b7355" opacity="0.95"/>
+  <!-- Spire 3 - the main summit tooth -->
+  <path d="M372,90 L378,76 L384,68 L390,62 L396,58 L400,55 L404,58 L408,65 L412,72 L406,82 L398,88 L388,90 Z"
+        fill="#8b7355" opacity="1"/>
+  <!-- Spire 4 -->
+  <path d="M412,72 L418,82 L422,88 L428,95 L432,105 L426,100 L418,90 Z"
+        fill="#7a6545" opacity="0.95"/>
+  <!-- Spire 5 - rightmost -->
+  <path d="M432,105 L438,118 L445,128 L448,130 L442,125 L435,112 Z"
+        fill="#6d5a3f" opacity="0.9"/>
+
+  <!-- Rock face shadows - couloirs and vertical gullies -->
+  <path d="M310,220 L325,180 L335,165 L340,180 L335,210 L320,240 Z"
+        fill="url(#rockShadow)" opacity="0.5"/>
+  <path d="M375,100 L385,78 L395,68 L398,85 L390,110 L380,130 Z"
+        fill="url(#rockShadow)" opacity="0.4"/>
+  <path d="M420,100 L432,115 L440,135 L448,155 L440,150 L430,130 Z"
+        fill="url(#rockShadow)" opacity="0.45"/>
+  <path d="M460,160 L475,185 L488,210 L498,230 L490,225 L478,200 L465,178 Z"
+        fill="url(#rockShadow)" opacity="0.4"/>
+
+  <!-- Sparse snow patches — pathetically thin, the article's "stripped winter" -->
+  <!-- Summit snow wisp -->
+  <path d="M392,62 L398,57 L404,60 L400,65 Z"
+        fill="url(#snowGrad)" opacity="0.5"/>
+  <!-- Small patch on left shoulder -->
+  <path d="M335,165 L342,155 L348,160 L345,168 Z"
+        fill="url(#snowGrad)" opacity="0.3"/>
+  <!-- Thin streak in a couloir -->
+  <path d="M380,120 L384,108 L388,115 L385,128 Z"
+        fill="url(#snowGrad)" opacity="0.25"/>
+  <!-- Right shoulder thin patch -->
+  <path d="M450,148 L455,140 L460,145 L458,152 Z"
+        fill="url(#snowGrad)" opacity="0.2"/>
+  <!-- One more thin line near base -->
+  <path d="M300,245 L308,235 L312,240 L306,250 Z"
+        fill="url(#snowGrad)" opacity="0.15"/>
+
+  <!-- East River - thin stream at the base, barely flowing -->
+  <path d="M260,340 Q310,335 360,342 Q420,350 480,338 Q540,328 590,335 Q640,342 700,336 Q740,332 780,338"
+        stroke="url(#waterGrad)" stroke-width="2" fill="none" opacity="0.4">
+    <animate attributeName="stroke-dasharray" values="4,8;8,4;4,8" dur="5s" repeatCount="indefinite"/>
+  </path>
+  <!-- Ghost of the river — where water should be -->
+  <path d="M260,342 Q310,338 360,344 Q420,352 480,340 Q540,330 590,337 Q640,344 700,338 Q740,334 780,340"
+        stroke="#4facfe" stroke-width="4" fill="none" opacity="0.06"/>
+
+  <!-- Water droplets evaporating off the rock face -->
+  <circle cx="370" cy="140" r="1.5" fill="#4facfe" opacity="0.35">
+    <animate attributeName="cy" values="140;110;140" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.35;0;0.35" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="415" cy="130" r="1.2" fill="#4facfe" opacity="0.3">
+    <animate attributeName="cy" values="130;95;130" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0;0.3" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="450" cy="165" r="1.0" fill="#4facfe" opacity="0.25">
+    <animate attributeName="cy" values="165;135;165" dur="4.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.25;0;0.25" dur="4.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Foreground hills - town elevation -->
+  <path d="M0,400 L0,345 L60,335 L130,350 L200,330 L270,345 L340,325 L400,340 L470,320 L540,335 L610,318 L680,332 L750,320 L800,335 L800,400 Z"
+        fill="url(#fgGrad)" opacity="0.75"/>
+
+  <!-- Tiny warm lights from the town of Crested Butte at the base -->
+  <g opacity="0.6">
+    <circle cx="310" cy="338" r="1.8" fill="#d4a574" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.6;0.4;0.6" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="330" cy="335" r="1.4" fill="#d4a574" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.5;0.3;0.5" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="350" cy="337" r="1.6" fill="#d4a574" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.55;0.35;0.55" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="370" cy="334" r="1.2" fill="#d4a574" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.5;0.3;0.5" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="395" cy="336" r="1.5" fill="#d4a574" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.6;0.35;0.6" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="420" cy="333" r="1.3" fill="#d4a574" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.45;0.25;0.45" dur="3.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="445" cy="335" r="1.0" fill="#d4a574" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.5;0.3;0.5" dur="4.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="465" cy="332" r="1.4" fill="#d4a574" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.55;0.3;0.55" dur="3.6s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Ambient floating particles — dry, dusty air -->
+  <g fill="#a8c5d8" opacity="0.2">
+    <circle cx="150" cy="180" r="1.5">
+      <animate attributeName="cy" values="180;170;180" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="620" cy="200" r="1.2">
+      <animate attributeName="cy" values="200;190;200" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="700" cy="250" r="1.0">
+      <animate attributeName="cy" values="250;242;250" dur="5.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="100" cy="260" r="1.3">
+      <animate attributeName="cy" values="260;252;260" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
