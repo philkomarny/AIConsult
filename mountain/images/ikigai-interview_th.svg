@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="50%" style="stop-color:#1a3a5c"/>
+      <stop offset="100%" style="stop-color:#0f1e35"/>
+    </linearGradient>
+
+    <radialGradient id="loveGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#c27ba0;stop-opacity:0.35"/>
+      <stop offset="70%" style="stop-color:#c27ba0;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#c27ba0;stop-opacity:0"/>
+    </radialGradient>
+
+    <radialGradient id="skillGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#a8c5d8;stop-opacity:0.35"/>
+      <stop offset="70%" style="stop-color:#a8c5d8;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#a8c5d8;stop-opacity:0"/>
+    </radialGradient>
+
+    <radialGradient id="needGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#7bc2a8;stop-opacity:0.35"/>
+      <stop offset="70%" style="stop-color:#7bc2a8;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#7bc2a8;stop-opacity:0"/>
+    </radialGradient>
+
+    <radialGradient id="paidGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.35"/>
+      <stop offset="70%" style="stop-color:#d4a574;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0"/>
+    </radialGradient>
+
+    <linearGradient id="bridgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0"/>
+      <stop offset="30%" style="stop-color:#d4a574;stop-opacity:0.7"/>
+      <stop offset="70%" style="stop-color:#a8c5d8;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#a8c5d8;stop-opacity:0"/>
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="circleBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="0.8" fill="#a8c5d8" opacity="0.1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGrad)"/>
+  <rect width="400" height="300" fill="url(#grid)"/>
+
+  <!-- Human Ikigai (left) -->
+  <g transform="translate(130, 150)">
+    <circle cx="0" cy="-28" r="45" fill="url(#loveGrad)" filter="url(#circleBlur)"/>
+    <circle cx="28" cy="0" r="45" fill="url(#skillGrad)" filter="url(#circleBlur)"/>
+    <circle cx="0" cy="28" r="45" fill="url(#needGrad)" filter="url(#circleBlur)"/>
+    <circle cx="-28" cy="0" r="45" fill="url(#paidGrad)" filter="url(#circleBlur)"/>
+
+    <circle cx="0" cy="-28" r="45" fill="none" stroke="#c27ba0" stroke-width="0.8" opacity="0.3"/>
+    <circle cx="28" cy="0" r="45" fill="none" stroke="#a8c5d8" stroke-width="0.8" opacity="0.3"/>
+    <circle cx="0" cy="28" r="45" fill="none" stroke="#7bc2a8" stroke-width="0.8" opacity="0.3"/>
+    <circle cx="-28" cy="0" r="45" fill="none" stroke="#d4a574" stroke-width="0.8" opacity="0.3"/>
+
+    <!-- Center -->
+    <circle cx="0" cy="0" r="12" fill="#0a1628" stroke="#d4a574" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="6" fill="#d4a574" opacity="0.85">
+      <animate attributeName="opacity" values="0.85;0.5;0.85" dur="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Human silhouette -->
+    <circle cx="0" cy="-3" r="2.5" fill="#f0f4f8" opacity="0.7"/>
+    <path d="M-3,1 Q0,4 3,1" stroke="#f0f4f8" stroke-width="1.5" fill="none" opacity="0.6" stroke-linecap="round"/>
+  </g>
+
+  <!-- AI Ikigai (right) -->
+  <g transform="translate(270, 150)">
+    <circle cx="0" cy="-28" r="45" fill="url(#loveGrad)" filter="url(#circleBlur)"/>
+    <circle cx="28" cy="0" r="45" fill="url(#skillGrad)" filter="url(#circleBlur)"/>
+    <circle cx="0" cy="28" r="45" fill="url(#needGrad)" filter="url(#circleBlur)"/>
+    <circle cx="-28" cy="0" r="45" fill="url(#paidGrad)" filter="url(#circleBlur)"/>
+
+    <circle cx="0" cy="-28" r="45" fill="none" stroke="#c27ba0" stroke-width="0.8" opacity="0.3"/>
+    <circle cx="28" cy="0" r="45" fill="none" stroke="#a8c5d8" stroke-width="0.8" opacity="0.3"/>
+    <circle cx="0" cy="28" r="45" fill="none" stroke="#7bc2a8" stroke-width="0.8" opacity="0.3"/>
+    <circle cx="-28" cy="0" r="45" fill="none" stroke="#d4a574" stroke-width="0.8" opacity="0.3"/>
+
+    <!-- Center -->
+    <circle cx="0" cy="0" r="12" fill="#0a1628" stroke="#a8c5d8" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="0" cy="0" r="6" fill="#a8c5d8" opacity="0.85">
+      <animate attributeName="opacity" values="0.85;0.5;0.85" dur="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- AI node symbol -->
+    <circle cx="0" cy="0" r="2" fill="#f0f4f8" opacity="0.7"/>
+    <circle cx="-3.5" cy="-3" r="1" fill="#f0f4f8" opacity="0.45"/>
+    <circle cx="3.5" cy="-3" r="1" fill="#f0f4f8" opacity="0.45"/>
+    <circle cx="-3.5" cy="3" r="1" fill="#f0f4f8" opacity="0.45"/>
+    <circle cx="3.5" cy="3" r="1" fill="#f0f4f8" opacity="0.45"/>
+    <line x1="0" y1="0" x2="-3.5" y2="-3" stroke="#f0f4f8" stroke-width="0.6" opacity="0.4"/>
+    <line x1="0" y1="0" x2="3.5" y2="-3" stroke="#f0f4f8" stroke-width="0.6" opacity="0.4"/>
+    <line x1="0" y1="0" x2="-3.5" y2="3" stroke="#f0f4f8" stroke-width="0.6" opacity="0.4"/>
+    <line x1="0" y1="0" x2="3.5" y2="3" stroke="#f0f4f8" stroke-width="0.6" opacity="0.4"/>
+  </g>
+
+  <!-- Bridge connecting centers -->
+  <path d="M142,150 Q200,135 258,150"
+        stroke="url(#bridgeGrad)" stroke-width="2" fill="none" filter="url(#softGlow)"
+        stroke-dasharray="6,5" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" values="0;-22" dur="3s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- Ambient particles -->
+  <circle cx="200" cy="70" r="1.5" fill="#d4a574" opacity="0.2">
+    <animate attributeName="cy" values="70;63;70" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="60" cy="230" r="1" fill="#a8c5d8" opacity="0.15">
+    <animate attributeName="cy" values="230;224;230" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="340" cy="240" r="1.2" fill="#c27ba0" opacity="0.15">
+    <animate attributeName="cy" values="240;234;240" dur="5.5s" repeatCount="indefinite"/>
+  </circle>
+</svg>

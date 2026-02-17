@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a12"/>
+      <stop offset="60%" style="stop-color:#0f0f1a"/>
+      <stop offset="100%" style="stop-color:#1a1520"/>
+    </linearGradient>
+
+    <radialGradient id="ampGlow" cx="50%" cy="85%" r="35%">
+      <stop offset="0%" style="stop-color:#d4874b;stop-opacity:0.35"/>
+      <stop offset="40%" style="stop-color:#d4623b;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#d4623b;stop-opacity:0"/>
+    </radialGradient>
+
+    <radialGradient id="glassWarm" cx="25%" cy="25%" r="30%">
+      <stop offset="0%" style="stop-color:#d4623b;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#d4623b;stop-opacity:0"/>
+    </radialGradient>
+
+    <radialGradient id="glassCool" cx="75%" cy="20%" r="28%">
+      <stop offset="0%" style="stop-color:#2a5caa;stop-opacity:0.18"/>
+      <stop offset="100%" style="stop-color:#2a5caa;stop-opacity:0"/>
+    </radialGradient>
+
+    <linearGradient id="figureGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#151520"/>
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="tubeGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGrad)"/>
+
+  <!-- Arches -->
+  <path d="M50,0 Q200,60 350,0" stroke="#2a2535" stroke-width="2" fill="none" opacity="0.3"/>
+  <path d="M0,10 Q200,80 400,10" stroke="#252030" stroke-width="1.5" fill="none" opacity="0.2"/>
+
+  <!-- Left window - simplified -->
+  <g opacity="0.8">
+    <path d="M40,25 L40,140 Q40,148 48,148 L82,148 Q90,148 90,140 L90,25 Q65,8 40,25 Z" fill="#1a1822" stroke="#3a3540" stroke-width="1"/>
+    <rect x="46" y="38" width="16" height="30" rx="1" fill="#8b2020" opacity="0.55"/>
+    <rect x="68" y="38" width="16" height="30" rx="1" fill="#c4432b" opacity="0.45"/>
+    <rect x="46" y="74" width="16" height="30" rx="1" fill="#1a6b3a" opacity="0.45"/>
+    <rect x="68" y="74" width="16" height="30" rx="1" fill="#2a8a4e" opacity="0.4"/>
+    <rect x="46" y="110" width="16" height="30" rx="1" fill="#d4a832" opacity="0.35"/>
+    <rect x="68" y="110" width="16" height="30" rx="1" fill="#b8922a" opacity="0.3"/>
+    <circle cx="65" cy="24" r="8" fill="#4a2080" opacity="0.4"/>
+    <line x1="65" y1="33" x2="65" y2="148" stroke="#3a3540" stroke-width="1"/>
+  </g>
+
+  <!-- Right window - simplified -->
+  <g opacity="0.8">
+    <path d="M310,25 L310,140 Q310,148 318,148 L352,148 Q360,148 360,140 L360,25 Q335,8 310,25 Z" fill="#1a1822" stroke="#3a3540" stroke-width="1"/>
+    <rect x="316" y="38" width="16" height="30" rx="1" fill="#2050a0" opacity="0.5"/>
+    <rect x="338" y="38" width="16" height="30" rx="1" fill="#2a5caa" opacity="0.45"/>
+    <rect x="316" y="74" width="16" height="30" rx="1" fill="#8b2020" opacity="0.4"/>
+    <rect x="338" y="74" width="16" height="30" rx="1" fill="#c44830" opacity="0.35"/>
+    <rect x="316" y="110" width="16" height="30" rx="1" fill="#1a6b3a" opacity="0.35"/>
+    <rect x="338" y="110" width="16" height="30" rx="1" fill="#2d8a4e" opacity="0.3"/>
+    <circle cx="335" cy="24" r="8" fill="#d4623b" opacity="0.4"/>
+    <line x1="335" y1="33" x2="335" y2="148" stroke="#3a3540" stroke-width="1"/>
+  </g>
+
+  <!-- Color light spill -->
+  <rect width="400" height="300" fill="url(#glassWarm)"/>
+  <rect width="400" height="300" fill="url(#glassCool)"/>
+
+  <!-- Floor -->
+  <rect x="30" y="240" width="340" height="60" fill="#1a1520" opacity="0.8"/>
+
+  <!-- Amp glow -->
+  <ellipse cx="200" cy="255" rx="120" ry="40" fill="url(#ampGlow)"/>
+
+  <!-- Amp -->
+  <rect x="245" y="200" width="35" height="44" rx="2" fill="#1a1515" stroke="#2a2225" stroke-width="1"/>
+  <rect x="249" y="215" width="27" height="24" rx="1" fill="#0f0f12"/>
+  <circle cx="255" cy="208" r="2.5" fill="#d4874b" opacity="0.65" filter="url(#tubeGlow)">
+    <animate attributeName="opacity" values="0.65;0.45;0.65" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="264" cy="208" r="2.5" fill="#d4874b" opacity="0.55" filter="url(#tubeGlow)">
+    <animate attributeName="opacity" values="0.55;0.35;0.55" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="273" cy="208" r="2.5" fill="#d4874b" opacity="0.6" filter="url(#tubeGlow)">
+    <animate attributeName="opacity" values="0.6;0.4;0.6" dur="2.8s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- THE FIGURE -->
+  <!-- Body -->
+  <path d="M190,80 L186,90 L182,110 L178,140 L175,170 L172,200 L170,240
+           L182,240 L184,215 L187,190 L190,170
+           L193,170 L196,190 L198,215 L200,240
+           L212,240 L210,200 L207,170 L204,140 L200,110 L196,90 Z"
+        fill="url(#figureGrad)" opacity="0.95"/>
+
+  <!-- Head with bucket -->
+  <rect x="183" y="52" width="20" height="22" rx="1" fill="#0a0a0f"/>
+  <rect x="179" y="72" width="28" height="4" rx="1" fill="#0a0a0f"/>
+  <!-- Mask hint -->
+  <ellipse cx="193" cy="80" rx="7" ry="8" fill="#e8e0d8" opacity="0.06"/>
+
+  <!-- Guitar -->
+  <line x1="173" y1="115" x2="215" y2="175" stroke="#2a1f15" stroke-width="3" stroke-linecap="round"/>
+  <path d="M170,110 L167,104 L170,100 L175,102 L177,108 L174,114 Z" fill="#1a1510"/>
+  <ellipse cx="216" cy="178" rx="20" ry="15" fill="#1a1510"/>
+  <ellipse cx="214" cy="172" rx="15" ry="11" fill="#201a12"/>
+
+  <!-- Edge lighting -->
+  <path d="M186,90 L184,110 L182,140 L180,170 L178,190 L180,190 L182,170 L184,140 L186,110 L188,90 Z"
+        fill="#d4623b" opacity="0.07"/>
+  <path d="M196,90 L198,110 L200,140 L202,170 L204,190 L202,190 L200,170 L198,140 L196,110 L194,90 Z"
+        fill="#2a5caa" opacity="0.05"/>
+
+  <!-- Sound waves -->
+  <circle cx="262" cy="228" r="25" stroke="#d4874b" stroke-width="0.8" fill="none" opacity="0.05">
+    <animate attributeName="r" values="25;50;25" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.06;0;0.06" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="262" cy="228" r="40" stroke="#d4874b" stroke-width="0.6" fill="none" opacity="0.04">
+    <animate attributeName="r" values="40;70;40" dur="3.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.04;0;0.04" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Dust motes -->
+  <g fill="#e8d5b8" opacity="0.12">
+    <circle cx="130" cy="100" r="0.8">
+      <animate attributeName="cy" values="100;93;100" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="250" cy="80" r="1">
+      <animate attributeName="cy" values="80;72;80" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="170" cy="140" r="0.7">
+      <animate attributeName="cy" values="140;134;140" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="280" cy="120" r="0.9">
+      <animate attributeName="cy" values="120;114;120" dur="5.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
