@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phil Komarny — AI Strategist & Consultant</title>
+    <meta name="description" content="Phil Komarny — AI strategist and technology consultant in Crested Butte, CO. 30 years making technology useful for organizations.">
+    <meta property="og:title" content="Phil Komarny — AI Strategist">
+    <meta property="og:description" content="AI strategist and technology consultant. 30 years making technology useful for organizations.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" type="image/png" href="../mountain/images/mtlogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Grain Overlay -->
+    <svg class="grain" aria-hidden="true">
+        <filter id="grain-filter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grain-filter)"/>
+    </svg>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav" aria-label="Main navigation">
+        <a href="#hero" class="nav-mark">PK</a>
+        <div class="nav-links" id="nav-links">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#thoughts" class="nav-link">Thoughts</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section id="hero" class="hero">
+        <h1 class="sr-only">Phil Komarny — AI Strategist & Technology Consultant</h1>
+        <div class="hero-content">
+            <div class="hero-name" aria-hidden="true">
+                <span class="hero-first">Phil</span>
+                <span class="hero-last">Komarny</span>
+            </div>
+            <div class="hero-accent-line"></div>
+            <div class="hero-statement" aria-live="polite">
+                <span class="hero-statement-text" id="typewriter"></span><span class="cursor"></span>
+            </div>
+        </div>
+        <div class="hero-footer">
+            <div class="hero-location">
+                <span>Crested Butte, CO</span>
+                <span class="hero-coords">38.88&deg;N, 106.94&deg;W</span>
+            </div>
+            <div class="scroll-indicator" aria-hidden="true">
+                <div class="scroll-line">
+                    <div class="scroll-line-fill"></div>
+                </div>
+                <span class="scroll-label">scroll</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section section--light">
+        <div class="container">
+            <div class="section-tag reveal">
+                <span class="section-tag-num">01</span>
+                <span class="section-tag-line"></span>
+                <span class="section-tag-label">About</span>
+            </div>
+            <div class="about-grid">
+                <div class="about-headline-wrapper">
+                    <h2 class="about-headline reveal">
+                        I make AI <em>useful</em>.
+                    </h2>
+                </div>
+                <div class="about-body">
+                    <p class="reveal">Not theoretical. Not hype. Useful.</p>
+                    <p class="reveal">I've spent 30 years figuring out how to make technology actually work for organizations. The hard part was never the tech — it was the translation. Helping people see what's possible, then making it real.</p>
+                    <p class="reveal">Now I'm in the Gunnison Valley, helping local businesses cut through the AI noise. The same strategic thinking that Fortune 500 companies pay for, available to the people and places I care about.</p>
+                    <p class="reveal">AI isn't magic. It's a tool. I help you figure out if it's the right tool, and if so, how to use it without breaking everything.</p>
+                    <p class="reveal dim">No jargon. No black boxes. Just honest answers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section section--warm">
+        <div class="container">
+            <div class="section-tag reveal">
+                <span class="section-tag-num">02</span>
+                <span class="section-tag-line"></span>
+                <span class="section-tag-label">Experience</span>
+            </div>
+            <div class="timeline stagger-group">
+                <div class="timeline-item stagger-item reveal">
+                    <div class="timeline-dates">2021–Present</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-company">Maryville University</h3>
+                        <p class="timeline-role">Chief Future Officer / Chief Innovation Officer</p>
+                        <p class="timeline-desc">Revolutionizing the software that powers higher education. Building the tools that should have existed years ago.</p>
+                    </div>
+                </div>
+                <div class="timeline-item stagger-item reveal">
+                    <div class="timeline-dates">2017–2021</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-company">Salesforce</h3>
+                        <p class="timeline-role">VP of Innovation</p>
+                        <p class="timeline-desc">Helped Fortune 500 customers see around corners. Finding where innovation actually lives — not where everyone's already looking.</p>
+                    </div>
+                </div>
+                <div class="timeline-item stagger-item reveal">
+                    <div class="timeline-dates">2015–2017</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-company">UT System</h3>
+                        <p class="timeline-role">Chief Digital Officer</p>
+                        <p class="timeline-desc">Helped construct Admiral McRaven's "quantum leap" — UTx. Rethinking what a public university system could be.</p>
+                    </div>
+                </div>
+                <div class="timeline-item stagger-item reveal">
+                    <div class="timeline-dates">2014–2015</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-company">Robots and Pencils</h3>
+                        <p class="timeline-role">CEO, USA</p>
+                        <p class="timeline-desc">Brought the love to the US. 35th fastest growing tech company. 3,400% growth. That's not a typo.</p>
+                    </div>
+                </div>
+                <div class="timeline-item stagger-item reveal">
+                    <div class="timeline-dates">2009–2014</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-company">Seton Hill University</h3>
+                        <p class="timeline-role">VP & CIO</p>
+                        <p class="timeline-desc">Yeah, I was the one who did "iPads for Everyone" in higher ed. 2010. Before it was a thing. CIO100 Award. Apple Award. Changed the game.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="timeline-footnote reveal">There's more. A lot more. But you get the idea — I've been doing this since before most AI models were born. <a href="https://www.linkedin.com/in/philkomarny/" target="_blank" rel="noopener noreferrer">LinkedIn</a> if you're curious.</p>
+        </div>
+    </section>
+
+    <!-- Thoughts -->
+    <section id="thoughts" class="section section--light">
+        <div class="container">
+            <div class="section-tag reveal">
+                <span class="section-tag-num">03</span>
+                <span class="section-tag-line"></span>
+                <span class="section-tag-label">Thoughts</span>
+            </div>
+            <p class="thoughts-subtitle reveal">Observations on AI, technology, and getting things done.</p>
+            <div class="thoughts-list stagger-group">
+                <a href="../mountain/articles/culture-eats-process.html" class="thought-card stagger-item reveal">
+                    <div class="thought-card-meta">
+                        <span class="thought-card-date">Feb 2025</span>
+                    </div>
+                    <h3 class="thought-card-title">Culture Eats Process</h3>
+                    <p class="thought-card-excerpt">Why your methodology doesn't matter until you fix what's underneath.</p>
+                    <span class="thought-card-arrow" aria-hidden="true">&rarr;</span>
+                </a>
+                <a href="../mountain/articles/scaling-your-talents.html" class="thought-card stagger-item reveal">
+                    <div class="thought-card-meta">
+                        <span class="thought-card-date">Feb 2025</span>
+                    </div>
+                    <h3 class="thought-card-title">Scaling Your Talents</h3>
+                    <p class="thought-card-excerpt">How AI amplifies what you already know. From $250/month to $2.50.</p>
+                    <span class="thought-card-arrow" aria-hidden="true">&rarr;</span>
+                </a>
+                <a href="../mountain/articles/why-were-here.html" class="thought-card stagger-item reveal">
+                    <div class="thought-card-meta">
+                        <span class="thought-card-date">Feb 2025</span>
+                    </div>
+                    <h3 class="thought-card-title">Why We're Here</h3>
+                    <p class="thought-card-excerpt">AI isn't coming. It's here. The mission behind the mountain.</p>
+                    <span class="thought-card-arrow" aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section section--dark contact-section">
+        <div class="container">
+            <div class="section-tag reveal">
+                <span class="section-tag-num">04</span>
+                <span class="section-tag-line"></span>
+                <span class="section-tag-label">Contact</span>
+            </div>
+            <h2 class="contact-headline reveal">let's talk.</h2>
+            <p class="contact-intro reveal">Got a question? An idea? Want to know if AI makes sense for your situation? Drop me a line.</p>
+            <form class="contact-form reveal" action="https://formspree.io/f/mzdaggnr" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">What's on your mind?</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="contact-submit">Send</button>
+            </form>
+            <div class="contact-alt reveal">
+                <p>Prefer email? <a href="mailto:phil@komarny.com">phil@komarny.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <span class="footer-name">Phil Komarny</span>
+            <span class="footer-location">Crested Butte, CO</span>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
