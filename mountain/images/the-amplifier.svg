@@ -1,0 +1,321 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <!-- Dark church interior -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a12"/>
+      <stop offset="60%" style="stop-color:#0f0f1a"/>
+      <stop offset="100%" style="stop-color:#1a1520"/>
+    </linearGradient>
+
+    <!-- Stained glass warm -->
+    <radialGradient id="glassWarm" cx="30%" cy="25%" r="35%">
+      <stop offset="0%" style="stop-color:#d4623b;stop-opacity:0.25"/>
+      <stop offset="60%" style="stop-color:#8b3a1e;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#8b3a1e;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Stained glass cool -->
+    <radialGradient id="glassCool" cx="70%" cy="20%" r="30%">
+      <stop offset="0%" style="stop-color:#2a5caa;stop-opacity:0.2"/>
+      <stop offset="60%" style="stop-color:#1a3366;stop-opacity:0.06"/>
+      <stop offset="100%" style="stop-color:#1a3366;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Stained glass green -->
+    <radialGradient id="glassGreen" cx="18%" cy="30%" r="20%">
+      <stop offset="0%" style="stop-color:#2d8a4e;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#2d8a4e;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Amp glow -->
+    <radialGradient id="ampGlow" cx="50%" cy="85%" r="30%">
+      <stop offset="0%" style="stop-color:#d4874b;stop-opacity:0.4"/>
+      <stop offset="40%" style="stop-color:#d4623b;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#d4623b;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Stage light from above -->
+    <radialGradient id="stageLight" cx="50%" cy="0%" r="60%">
+      <stop offset="0%" style="stop-color:#e8d5b8;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#e8d5b8;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Figure silhouette gradient -->
+    <linearGradient id="figureGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#151520"/>
+    </linearGradient>
+
+    <!-- Stone wall -->
+    <linearGradient id="stoneGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2530"/>
+      <stop offset="100%" style="stop-color:#1a1520"/>
+    </linearGradient>
+
+    <!-- Floor gradient -->
+    <linearGradient id="floorGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1520"/>
+      <stop offset="100%" style="stop-color:#0f0c14"/>
+    </linearGradient>
+
+    <!-- Color spill on floor -->
+    <linearGradient id="floorColor" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d4623b;stop-opacity:0.06"/>
+      <stop offset="30%" style="stop-color:#2d8a4e;stop-opacity:0.04"/>
+      <stop offset="60%" style="stop-color:#2a5caa;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:#8b3a8b;stop-opacity:0.04"/>
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="tubeGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background - dark church interior -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+
+  <!-- Vaulted ceiling suggestion - stone arches -->
+  <path d="M0,0 L400,30 L800,0 L800,50 L400,80 L0,50 Z" fill="#1a1520" opacity="0.5"/>
+  <!-- Arch ribs -->
+  <path d="M200,0 Q400,90 600,0" stroke="#2a2535" stroke-width="3" fill="none" opacity="0.4"/>
+  <path d="M100,0 Q400,120 700,0" stroke="#2a2535" stroke-width="2" fill="none" opacity="0.3"/>
+  <path d="M0,20 Q400,140 800,20" stroke="#252030" stroke-width="2" fill="none" opacity="0.25"/>
+
+  <!-- Left wall -->
+  <rect x="0" y="0" width="80" height="400" fill="url(#stoneGrad)" opacity="0.6"/>
+  <!-- Right wall -->
+  <rect x="720" y="0" width="80" height="400" fill="url(#stoneGrad)" opacity="0.6"/>
+
+  <!-- LEFT STAINED GLASS WINDOW -->
+  <g opacity="0.85">
+    <!-- Window frame - gothic arch -->
+    <path d="M100,40 L100,200 Q100,210 110,210 L170,210 Q180,210 180,200 L180,40 Q140,10 100,40 Z" fill="#1a1822" stroke="#3a3540" stroke-width="1.5"/>
+    <!-- Glass panels -->
+    <rect x="108" y="55" width="28" height="45" rx="2" fill="#8b2020" opacity="0.6"/>
+    <rect x="144" y="55" width="28" height="45" rx="2" fill="#c4432b" opacity="0.5"/>
+    <rect x="108" y="108" width="28" height="45" rx="2" fill="#1a6b3a" opacity="0.5"/>
+    <rect x="144" y="108" width="28" height="45" rx="2" fill="#2a8a4e" opacity="0.45"/>
+    <rect x="108" y="161" width="28" height="42" rx="2" fill="#d4a832" opacity="0.4"/>
+    <rect x="144" y="161" width="28" height="42" rx="2" fill="#b8922a" opacity="0.35"/>
+    <!-- Rose detail at top -->
+    <circle cx="140" cy="38" r="14" fill="#4a2080" opacity="0.5"/>
+    <circle cx="140" cy="38" r="8" fill="#6a30a0" opacity="0.4"/>
+    <!-- Mullions -->
+    <line x1="140" y1="50" x2="140" y2="210" stroke="#3a3540" stroke-width="1.5"/>
+    <line x1="105" y1="105" x2="175" y2="105" stroke="#3a3540" stroke-width="1"/>
+    <line x1="105" y1="158" x2="175" y2="158" stroke="#3a3540" stroke-width="1"/>
+  </g>
+
+  <!-- RIGHT STAINED GLASS WINDOW -->
+  <g opacity="0.85">
+    <path d="M620,40 L620,200 Q620,210 630,210 L690,210 Q700,210 700,200 L700,40 Q660,10 620,40 Z" fill="#1a1822" stroke="#3a3540" stroke-width="1.5"/>
+    <rect x="628" y="55" width="28" height="45" rx="2" fill="#2050a0" opacity="0.55"/>
+    <rect x="664" y="55" width="28" height="45" rx="2" fill="#2a5caa" opacity="0.5"/>
+    <rect x="628" y="108" width="28" height="45" rx="2" fill="#8b2020" opacity="0.45"/>
+    <rect x="664" y="108" width="28" height="45" rx="2" fill="#c44830" opacity="0.4"/>
+    <rect x="628" y="161" width="28" height="42" rx="2" fill="#1a6b3a" opacity="0.4"/>
+    <rect x="664" y="161" width="28" height="42" rx="2" fill="#2d8a4e" opacity="0.35"/>
+    <circle cx="660" cy="38" r="14" fill="#d4623b" opacity="0.45"/>
+    <circle cx="660" cy="38" r="8" fill="#e8784a" opacity="0.35"/>
+    <line x1="660" y1="50" x2="660" y2="210" stroke="#3a3540" stroke-width="1.5"/>
+    <line x1="625" y1="105" x2="695" y2="105" stroke="#3a3540" stroke-width="1"/>
+    <line x1="625" y1="158" x2="695" y2="158" stroke="#3a3540" stroke-width="1"/>
+  </g>
+
+  <!-- Color light spilling from windows -->
+  <rect width="800" height="400" fill="url(#glassWarm)"/>
+  <rect width="800" height="400" fill="url(#glassCool)"/>
+  <rect width="800" height="400" fill="url(#glassGreen)"/>
+  <rect width="800" height="400" fill="url(#stageLight)"/>
+
+  <!-- Floor -->
+  <rect x="80" y="320" width="640" height="80" fill="url(#floorGrad)"/>
+  <rect x="80" y="320" width="640" height="80" fill="url(#floorColor)"/>
+
+  <!-- Pew bolt marks on floor - ghost of where they used to be -->
+  <g fill="#2a2530" opacity="0.3">
+    <circle cx="200" cy="350" r="2"/>
+    <circle cx="230" cy="350" r="2"/>
+    <circle cx="200" cy="370" r="2"/>
+    <circle cx="230" cy="370" r="2"/>
+    <circle cx="300" cy="350" r="2"/>
+    <circle cx="330" cy="350" r="2"/>
+    <circle cx="300" cy="370" r="2"/>
+    <circle cx="330" cy="370" r="2"/>
+    <circle cx="470" cy="350" r="2"/>
+    <circle cx="500" cy="350" r="2"/>
+    <circle cx="470" cy="370" r="2"/>
+    <circle cx="500" cy="370" r="2"/>
+    <circle cx="570" cy="350" r="2"/>
+    <circle cx="600" cy="350" r="2"/>
+    <circle cx="570" cy="370" r="2"/>
+    <circle cx="600" cy="370" r="2"/>
+  </g>
+
+  <!-- Colored light patches on the stone floor -->
+  <ellipse cx="180" cy="345" rx="40" ry="15" fill="#d4623b" opacity="0.04"/>
+  <ellipse cx="250" cy="355" rx="30" ry="12" fill="#2d8a4e" opacity="0.03"/>
+  <ellipse cx="550" cy="345" rx="35" ry="14" fill="#2a5caa" opacity="0.04"/>
+  <ellipse cx="630" cy="355" rx="30" ry="12" fill="#c44830" opacity="0.03"/>
+
+  <!-- AMP GLOW from behind figure -->
+  <ellipse cx="400" cy="340" rx="180" ry="60" fill="url(#ampGlow)"/>
+
+  <!-- AMPLIFIER - stage right -->
+  <rect x="480" y="268" width="50" height="62" rx="3" fill="#1a1515" stroke="#2a2225" stroke-width="1"/>
+  <!-- Amp speaker grille -->
+  <rect x="485" y="290" width="40" height="35" rx="2" fill="#0f0f12"/>
+  <g opacity="0.15">
+    <line x1="487" y1="295" x2="523" y2="295" stroke="#3a3535" stroke-width="0.5"/>
+    <line x1="487" y1="300" x2="523" y2="300" stroke="#3a3535" stroke-width="0.5"/>
+    <line x1="487" y1="305" x2="523" y2="305" stroke="#3a3535" stroke-width="0.5"/>
+    <line x1="487" y1="310" x2="523" y2="310" stroke="#3a3535" stroke-width="0.5"/>
+    <line x1="487" y1="315" x2="523" y2="315" stroke="#3a3535" stroke-width="0.5"/>
+    <line x1="487" y1="320" x2="523" y2="320" stroke="#3a3535" stroke-width="0.5"/>
+  </g>
+  <!-- Amp tube glow - the warm amber -->
+  <circle cx="495" cy="278" r="3" fill="#d4874b" opacity="0.7" filter="url(#tubeGlow)">
+    <animate attributeName="opacity" values="0.7;0.5;0.7" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="505" cy="278" r="3" fill="#d4874b" opacity="0.6" filter="url(#tubeGlow)">
+    <animate attributeName="opacity" values="0.6;0.4;0.6" dur="3.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="515" cy="278" r="3" fill="#d4874b" opacity="0.65" filter="url(#tubeGlow)">
+    <animate attributeName="opacity" values="0.65;0.45;0.65" dur="2.8s" repeatCount="indefinite"/>
+  </circle>
+  <!-- Amp knobs -->
+  <circle cx="492" cy="272" r="1.5" fill="#2a2225"/>
+  <circle cx="500" cy="272" r="1.5" fill="#2a2225"/>
+  <circle cx="508" cy="272" r="1.5" fill="#2a2225"/>
+  <circle cx="516" cy="272" r="1.5" fill="#2a2225"/>
+  <circle cx="524" cy="272" r="1.5" fill="#2a2225"/>
+
+  <!-- Second amp - smaller, stage left -->
+  <rect x="280" y="285" width="40" height="45" rx="2" fill="#1a1515" stroke="#2a2225" stroke-width="1"/>
+  <rect x="284" y="300" width="32" height="25" rx="1" fill="#0f0f12"/>
+  <circle cx="293" cy="293" r="2.5" fill="#d4874b" opacity="0.5" filter="url(#tubeGlow)">
+    <animate attributeName="opacity" values="0.5;0.35;0.5" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="303" cy="293" r="2.5" fill="#d4874b" opacity="0.45" filter="url(#tubeGlow)">
+    <animate attributeName="opacity" values="0.45;0.3;0.45" dur="3.2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- THE FIGURE - tall silhouette, center stage -->
+  <!-- Body - tall, lanky -->
+  <path d="M385,110 L380,115 L375,140 L370,180 L365,220 L360,260 L355,290 L358,330
+           L375,330 L378,300 L380,270 L385,240
+           L390,240 L395,270 L397,300 L400,330
+           L418,330 L415,290 L410,260 L405,220 L400,180 L395,140 L390,115 Z"
+        fill="url(#figureGrad)" opacity="0.95"/>
+
+  <!-- Head - with the bucket hat silhouette -->
+  <rect x="375" y="72" width="30" height="30" rx="1" fill="#0a0a0f"/>
+  <!-- Bucket brim -->
+  <rect x="370" y="100" width="40" height="5" rx="1" fill="#0a0a0f"/>
+  <!-- Mask - faintest white suggestion -->
+  <ellipse cx="390" cy="110" rx="10" ry="12" fill="#e8e0d8" opacity="0.08"/>
+  <!-- Mask edge catch from colored light -->
+  <ellipse cx="387" cy="108" rx="6" ry="8" fill="#d4623b" opacity="0.04"/>
+
+  <!-- Guitar - Les Paul shape, held across body -->
+  <!-- Neck -->
+  <line x1="350" y1="155" x2="420" y2="240" stroke="#2a1f15" stroke-width="4" stroke-linecap="round"/>
+  <!-- Headstock -->
+  <path d="M345,148 L340,140 L343,135 L350,138 L355,145 L352,152 Z" fill="#1a1510"/>
+  <!-- Tuning pegs -->
+  <circle cx="341" cy="138" r="1.5" fill="#8a8070" opacity="0.4"/>
+  <circle cx="344" cy="135" r="1.5" fill="#8a8070" opacity="0.4"/>
+  <circle cx="351" cy="139" r="1.5" fill="#8a8070" opacity="0.4"/>
+  <!-- Body -->
+  <ellipse cx="420" cy="245" rx="28" ry="22" fill="#1a1510"/>
+  <ellipse cx="418" cy="235" rx="22" ry="16" fill="#201a12"/>
+  <!-- Pickups -->
+  <rect x="410" y="238" width="16" height="4" rx="1" fill="#0f0f0f" opacity="0.6"/>
+  <rect x="412" y="248" width="14" height="4" rx="1" fill="#0f0f0f" opacity="0.5"/>
+
+  <!-- Left arm reaching to fretboard -->
+  <path d="M375,150 L368,160 L358,170 L350,175 L355,168 L365,158 Z" fill="#0a0a0f" opacity="0.9"/>
+  <!-- Right arm on body -->
+  <path d="M400,180 L410,200 L418,220 L425,235 L420,238 L412,220 L405,200 Z" fill="#0a0a0f" opacity="0.9"/>
+
+  <!-- Fingers on fretboard - the argument with physics -->
+  <g fill="#1a1515" opacity="0.7">
+    <circle cx="352" cy="172" r="2"/>
+    <circle cx="356" cy="168" r="2"/>
+    <circle cx="360" cy="164" r="2"/>
+    <circle cx="355" cy="176" r="1.8"/>
+  </g>
+
+  <!-- Sound waves emanating from amp - visible energy -->
+  <g opacity="0.06">
+    <circle cx="505" cy="305" r="40" stroke="#d4874b" stroke-width="1" fill="none">
+      <animate attributeName="r" values="40;80;40" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.08;0;0.08" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="505" cy="305" r="55" stroke="#d4874b" stroke-width="1" fill="none">
+      <animate attributeName="r" values="55;100;55" dur="3.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.06;0;0.06" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="505" cy="305" r="70" stroke="#d4874b" stroke-width="0.8" fill="none">
+      <animate attributeName="r" values="70;120;70" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.04;0;0.04" dur="4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Colored light catching the figure's edges -->
+  <!-- Red edge light from left window -->
+  <path d="M375,120 L373,140 L371,170 L369,200 L367,230 L365,250 L367,250 L369,200 L373,170 L375,140 L377,120 Z"
+        fill="#d4623b" opacity="0.08"/>
+  <!-- Blue edge light from right window -->
+  <path d="M395,120 L397,140 L399,170 L401,200 L403,230 L405,250 L403,250 L401,200 L397,170 L395,140 L393,120 Z"
+        fill="#2a5caa" opacity="0.06"/>
+
+  <!-- Dust particles floating in the light -->
+  <g fill="#e8d5b8" opacity="0.15">
+    <circle cx="250" cy="150" r="1">
+      <animate attributeName="cy" values="150;140;150" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="250;255;250" dur="9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="350" cy="120" r="0.8">
+      <animate attributeName="cy" values="120;112;120" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="350;345;350" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="440" cy="100" r="1.2">
+      <animate attributeName="cy" values="100;90;100" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="440;445;440" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="550" cy="140" r="0.9">
+      <animate attributeName="cy" values="140;132;140" dur="5.5s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="550;555;550" dur="10s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="320" cy="200" r="1.1">
+      <animate attributeName="cy" values="200;192;200" dur="6.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="480" cy="180" r="0.7">
+      <animate attributeName="cy" values="180;172;180" dur="7.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Cable running from guitar to amp -->
+  <path d="M425,258 Q440,280 460,295 Q475,310 480,315" stroke="#1a1515" stroke-width="2" fill="none" opacity="0.4"/>
+</svg>

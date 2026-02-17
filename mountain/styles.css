@@ -1573,6 +1573,15 @@ body {
     max-width: 680px;
 }
 
+.article-hero {
+    width: 100%;
+    max-width: 680px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
 .article-header {
     display: flex;
     align-items: flex-start;
