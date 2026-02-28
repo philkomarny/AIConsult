@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="50%" style="stop-color:#0f1e35"/>
+      <stop offset="100%" style="stop-color:#0a1225"/>
+    </linearGradient>
+
+    <linearGradient id="pageGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8d5b8;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0.06"/>
+    </linearGradient>
+
+    <linearGradient id="spineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3d2e1a"/>
+      <stop offset="50%" style="stop-color:#5c4a32"/>
+      <stop offset="100%" style="stop-color:#3d2e1a"/>
+    </linearGradient>
+
+    <radialGradient id="dissolveGlow" cx="50%" cy="40%" r="45%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.2"/>
+      <stop offset="50%" style="stop-color:#a8c5d8;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#a8c5d8;stop-opacity:0"/>
+    </radialGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="letterGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bgGrad)"/>
+  <rect width="400" height="300" fill="url(#dissolveGlow)"/>
+
+  <!-- THE OPEN BOOK -->
+  <!-- Left page -->
+  <path d="M200,260 L200,170 Q190,167 140,172 L115,175 L115,268 Q160,262 200,260 Z"
+        fill="url(#pageGrad)" stroke="#d4a574" stroke-width="0.5" opacity="0.8"/>
+  <!-- Right page -->
+  <path d="M200,260 L200,170 Q210,167 260,172 L285,175 L285,268 Q240,262 200,260 Z"
+        fill="url(#pageGrad)" stroke="#d4a574" stroke-width="0.5" opacity="0.8"/>
+  <!-- Spine -->
+  <path d="M197,168 L200,166 L203,168 L203,262 L200,264 L197,262 Z"
+        fill="url(#spineGrad)" opacity="0.9"/>
+
+  <!-- Text lines on left page -->
+  <g stroke="#d4a574" stroke-width="0.6" opacity="0.2">
+    <line x1="128" y1="190" x2="192" y2="185"/>
+    <line x1="126" y1="200" x2="193" y2="195"/>
+    <line x1="124" y1="210" x2="194" y2="205"/>
+    <line x1="122" y1="220" x2="195" y2="215"/>
+    <line x1="120" y1="230" x2="196" y2="225"/>
+    <line x1="118" y1="240" x2="197" y2="235"/>
+  </g>
+
+  <!-- Text lines on right page — dissolving -->
+  <g stroke="#d4a574" opacity="0.18">
+    <line x1="208" y1="185" x2="272" y2="190" stroke-width="0.6"/>
+    <line x1="207" y1="195" x2="268" y2="200" stroke-width="0.5" stroke-dasharray="3,3"/>
+    <line x1="206" y1="205" x2="260" y2="210" stroke-width="0.4" stroke-dasharray="2,4"/>
+    <line x1="206" y1="215" x2="248" y2="220" stroke-width="0.3" stroke-dasharray="2,5"/>
+  </g>
+
+  <!-- Letters lifting off -->
+  <g font-family="'Cormorant Garamond', serif" fill="#d4a574" opacity="0.45">
+    <text x="215" y="155" font-size="8" transform="rotate(-6 215 155)" filter="url(#letterGlow)">
+      <animate attributeName="y" values="155;145;155" dur="6s" repeatCount="indefinite"/>
+      a
+    </text>
+    <text x="190" y="148" font-size="9" transform="rotate(10 190 148)" filter="url(#letterGlow)">
+      <animate attributeName="y" values="148;138;148" dur="7s" repeatCount="indefinite"/>
+      t
+    </text>
+    <text x="230" y="140" font-size="7" transform="rotate(-8 230 140)" filter="url(#letterGlow)">
+      <animate attributeName="y" values="140;128;140" dur="5.5s" repeatCount="indefinite"/>
+      e
+    </text>
+  </g>
+
+  <!-- Dissolving particles -->
+  <g fill="#a8c5d8" opacity="0.25">
+    <circle cx="200" cy="110" r="1.5">
+      <animate attributeName="cy" values="110;95;110" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.25;0.08;0.25" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="180" cy="95" r="2">
+      <animate attributeName="cy" values="95;78;95" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="225" cy="100" r="1.2">
+      <animate attributeName="cy" values="100;85;100" dur="5.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.25;0.08;0.25" dur="5.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Neural network nodes — upper portion -->
+  <g>
+    <circle cx="290" cy="60" r="4.5" fill="#0a1628" stroke="#a8c5d8" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="290" cy="60" r="2.2" fill="#a8c5d8" opacity="0.7">
+      <animate attributeName="opacity" values="0.7;0.4;0.7" dur="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="340" cy="100" r="4" fill="#0a1628" stroke="#d4a574" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="340" cy="100" r="2" fill="#d4a574" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;0.35;0.6" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="310" cy="140" r="5" fill="#0a1628" stroke="#a8c5d8" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="310" cy="140" r="2.5" fill="#a8c5d8" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.5;0.8" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="250" cy="50" r="3.5" fill="#0a1628" stroke="#d4a574" stroke-width="1" filter="url(#glow)"/>
+    <circle cx="250" cy="50" r="1.8" fill="#d4a574" opacity="0.5"/>
+
+    <circle cx="130" cy="55" r="3" fill="#0a1628" stroke="#a8c5d8" stroke-width="1" filter="url(#glow)"/>
+    <circle cx="130" cy="55" r="1.5" fill="#a8c5d8" opacity="0.4"/>
+
+    <circle cx="80" cy="80" r="3" fill="#0a1628" stroke="#d4a574" stroke-width="1" filter="url(#glow)"/>
+    <circle cx="80" cy="80" r="1.5" fill="#d4a574" opacity="0.4"/>
+  </g>
+
+  <!-- Neural connections -->
+  <g stroke-width="0.8" fill="none" opacity="0.18">
+    <path d="M250,50 Q270,55 290,60" stroke="#a8c5d8" stroke-dasharray="3,3">
+      <animate attributeName="stroke-dashoffset" values="0;-12" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M290,60 Q315,80 340,100" stroke="#d4a574" stroke-dasharray="3,3">
+      <animate attributeName="stroke-dashoffset" values="0;-12" dur="3.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M340,100 Q325,120 310,140" stroke="#a8c5d8" stroke-dasharray="3,3">
+      <animate attributeName="stroke-dashoffset" values="0;-12" dur="2.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M130,55 Q190,52 250,50" stroke="#d4a574" stroke-dasharray="3,3">
+      <animate attributeName="stroke-dashoffset" values="0;-12" dur="3.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M80,80 Q105,68 130,55" stroke="#a8c5d8" stroke-dasharray="3,3">
+      <animate attributeName="stroke-dashoffset" values="0;-12" dur="4s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Ambient particles -->
+  <g fill="#a8c5d8" opacity="0.2">
+    <circle cx="50" cy="150" r="1">
+      <animate attributeName="cy" values="150;142;150" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="360" cy="200" r="0.8">
+      <animate attributeName="cy" values="200;194;200" dur="5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
