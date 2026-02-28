@@ -1,0 +1,351 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <!-- Deep dark background -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="50%" style="stop-color:#0f1e35"/>
+      <stop offset="100%" style="stop-color:#0a1225"/>
+    </linearGradient>
+
+    <!-- Book page warm -->
+    <linearGradient id="pageGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8d5b8;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0.06"/>
+    </linearGradient>
+
+    <!-- Book spine -->
+    <linearGradient id="spineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3d2e1a"/>
+      <stop offset="50%" style="stop-color:#5c4a32"/>
+      <stop offset="100%" style="stop-color:#3d2e1a"/>
+    </linearGradient>
+
+    <!-- Letter dissolution glow -->
+    <radialGradient id="dissolveGlow" cx="50%" cy="40%" r="45%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.2"/>
+      <stop offset="50%" style="stop-color:#a8c5d8;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#a8c5d8;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Neural node warm glow -->
+    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#d4a574;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Upper atmosphere digital glow -->
+    <radialGradient id="digitalGlow" cx="65%" cy="15%" r="40%">
+      <stop offset="0%" style="stop-color:#5ba3c8;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#5ba3c8;stop-opacity:0"/>
+    </radialGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="letterGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="starGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="0.6" fill="#a8c5d8" opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  <rect width="800" height="400" fill="url(#grid)"/>
+
+  <!-- Stars in the upper dark -->
+  <g fill="#fff" opacity="0.5">
+    <circle cx="60" cy="25" r="1.0" filter="url(#starGlow)"/>
+    <circle cx="180" cy="45" r="0.7" filter="url(#starGlow)"/>
+    <circle cx="320" cy="20" r="1.2" filter="url(#starGlow)"/>
+    <circle cx="500" cy="35" r="0.8" filter="url(#starGlow)"/>
+    <circle cx="620" cy="18" r="1.1" filter="url(#starGlow)"/>
+    <circle cx="740" cy="42" r="0.9" filter="url(#starGlow)"/>
+    <circle cx="130" cy="60" r="0.6" filter="url(#starGlow)"/>
+    <circle cx="450" cy="55" r="0.7" filter="url(#starGlow)"/>
+    <circle cx="690" cy="65" r="1.0" filter="url(#starGlow)"/>
+  </g>
+
+  <!-- Atmospheric glows -->
+  <rect width="800" height="400" fill="url(#dissolveGlow)"/>
+  <rect width="800" height="400" fill="url(#digitalGlow)"/>
+
+  <!-- THE OPEN BOOK — center-bottom, pages spread -->
+  <!-- Left page -->
+  <path d="M400,340 L400,220 Q380,215 280,225 L230,230 L230,350 Q320,340 400,340 Z"
+        fill="url(#pageGrad)" stroke="#d4a574" stroke-width="0.5" opacity="0.8"/>
+  <!-- Right page -->
+  <path d="M400,340 L400,220 Q420,215 520,225 L570,230 L570,350 Q480,340 400,340 Z"
+        fill="url(#pageGrad)" stroke="#d4a574" stroke-width="0.5" opacity="0.8"/>
+  <!-- Spine -->
+  <path d="M395,218 L400,215 L405,218 L405,342 L400,345 L395,342 Z"
+        fill="url(#spineGrad)" opacity="0.9"/>
+  <!-- Spine shadow -->
+  <line x1="400" y1="218" x2="400" y2="342" stroke="#d4a574" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Text lines on left page — printed text, the Gutenberg side -->
+  <g stroke="#d4a574" stroke-width="0.8" opacity="0.25">
+    <line x1="255" y1="248" x2="385" y2="238"/>
+    <line x1="250" y1="260" x2="388" y2="250"/>
+    <line x1="248" y1="272" x2="390" y2="262"/>
+    <line x1="245" y1="284" x2="391" y2="274"/>
+    <line x1="243" y1="296" x2="392" y2="286"/>
+    <line x1="240" y1="308" x2="393" y2="298"/>
+    <line x1="238" y1="320" x2="394" y2="310"/>
+    <line x1="236" y1="332" x2="395" y2="322"/>
+  </g>
+
+  <!-- Text lines on right page — starting to dissolve -->
+  <g stroke="#d4a574" opacity="0.2">
+    <line x1="415" y1="238" x2="545" y2="248" stroke-width="0.8"/>
+    <line x1="413" y1="250" x2="548" y2="260" stroke-width="0.7"/>
+    <line x1="411" y1="262" x2="540" y2="272" stroke-width="0.6" stroke-dasharray="4,3"/>
+    <line x1="410" y1="274" x2="530" y2="284" stroke-width="0.5" stroke-dasharray="3,4"/>
+    <line x1="409" y1="286" x2="510" y2="296" stroke-width="0.4" stroke-dasharray="2,5"/>
+    <line x1="408" y1="298" x2="490" y2="308" stroke-width="0.3" stroke-dasharray="2,6" opacity="0.15"/>
+  </g>
+
+  <!-- LETTERS LIFTING OFF — the dissolution zone -->
+  <!-- Individual letter-like particles rising from the book -->
+  <!-- Warm gold letters near the book -->
+  <g font-family="'Cormorant Garamond', serif" fill="#d4a574" opacity="0.5">
+    <text x="420" y="210" font-size="10" transform="rotate(-5 420 210)" filter="url(#letterGlow)">a</text>
+    <text x="460" y="195" font-size="9" transform="rotate(8 460 195)" filter="url(#letterGlow)">
+      <animate attributeName="y" values="195;185;195" dur="6s" repeatCount="indefinite"/>
+      e
+    </text>
+    <text x="380" y="200" font-size="11" transform="rotate(-10 380 200)" filter="url(#letterGlow)">
+      <animate attributeName="y" values="200;190;200" dur="7s" repeatCount="indefinite"/>
+      t
+    </text>
+    <text x="350" y="185" font-size="8" transform="rotate(12 350 185)" filter="url(#letterGlow)">
+      <animate attributeName="y" values="185;172;185" dur="5.5s" repeatCount="indefinite"/>
+      h
+    </text>
+    <text x="440" y="180" font-size="10" transform="rotate(-7 440 180)" filter="url(#letterGlow)">
+      <animate attributeName="y" values="180;168;180" dur="6.5s" repeatCount="indefinite"/>
+      n
+    </text>
+  </g>
+
+  <!-- Transitioning letters — amber to blue, higher up -->
+  <g font-family="'Cormorant Garamond', serif" opacity="0.35">
+    <text x="370" y="160" font-size="9" fill="#c49a6e" transform="rotate(15 370 160)" filter="url(#letterGlow)">
+      <animate attributeName="y" values="160;148;160" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.2;0.4" dur="5s" repeatCount="indefinite"/>
+      i
+    </text>
+    <text x="430" y="150" font-size="8" fill="#b8a88a" transform="rotate(-12 430 150)" filter="url(#letterGlow)">
+      <animate attributeName="y" values="150;136;150" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.35;0.15;0.35" dur="6s" repeatCount="indefinite"/>
+      s
+    </text>
+    <text x="340" y="140" font-size="10" fill="#9ab0c0" transform="rotate(8 340 140)" filter="url(#letterGlow)">
+      <animate attributeName="y" values="140;125;140" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="7s" repeatCount="indefinite"/>
+      k
+    </text>
+    <text x="470" y="130" font-size="7" fill="#a8c5d8" transform="rotate(-18 470 130)" filter="url(#letterGlow)">
+      <animate attributeName="y" values="130;115;130" dur="5.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="5.5s" repeatCount="indefinite"/>
+      o
+    </text>
+  </g>
+
+  <!-- Dissolving into particles — the highest letters become dots -->
+  <g fill="#a8c5d8" opacity="0.3">
+    <circle cx="360" cy="110" r="2">
+      <animate attributeName="cy" values="110;95;110" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="420" cy="100" r="1.5">
+      <animate attributeName="cy" values="100;82;100" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.25;0.08;0.25" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="390" cy="90" r="2.5">
+      <animate attributeName="cy" values="90;72;90" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="450" cy="85" r="1.8">
+      <animate attributeName="cy" values="85;68;85" dur="5.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="5.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="340" cy="80" r="1.2">
+      <animate attributeName="cy" values="80;65;80" dur="6.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.25;0.08;0.25" dur="6.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- NEURAL NETWORK forming in the upper space — the GPT side -->
+  <!-- Primary nodes -->
+  <g>
+    <!-- Node cluster - upper right -->
+    <circle cx="580" cy="80" r="6" fill="#0a1628" stroke="#a8c5d8" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="580" cy="80" r="3" fill="#a8c5d8" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.5;0.8" dur="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="660" cy="120" r="5" fill="#0a1628" stroke="#d4a574" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="660" cy="120" r="2.5" fill="#d4a574" opacity="0.7">
+      <animate attributeName="opacity" values="0.7;0.4;0.7" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="620" cy="170" r="7" fill="#0a1628" stroke="#a8c5d8" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="620" cy="170" r="3.5" fill="#a8c5d8" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.6;0.9" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="540" cy="140" r="5" fill="#0a1628" stroke="#d4a574" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="540" cy="140" r="2.5" fill="#d4a574" opacity="0.7">
+      <animate attributeName="opacity" values="0.7;0.45;0.7" dur="4s" repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="700" cy="60" r="4" fill="#0a1628" stroke="#a8c5d8" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="700" cy="60" r="2" fill="#a8c5d8" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;0.35;0.6" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="720" cy="160" r="4.5" fill="#0a1628" stroke="#d4a574" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="720" cy="160" r="2.2" fill="#d4a574" opacity="0.65">
+      <animate attributeName="opacity" values="0.65;0.4;0.65" dur="3.8s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Secondary nodes - upper left, connecting from the dissolved letters -->
+    <circle cx="300" cy="70" r="4" fill="#0a1628" stroke="#a8c5d8" stroke-width="1" filter="url(#glow)"/>
+    <circle cx="300" cy="70" r="2" fill="#a8c5d8" opacity="0.5"/>
+
+    <circle cx="480" cy="60" r="5" fill="#0a1628" stroke="#d4a574" stroke-width="1.5" filter="url(#glow)"/>
+    <circle cx="480" cy="60" r="2.5" fill="#d4a574" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;0.3;0.6" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <circle cx="200" cy="100" r="3.5" fill="#0a1628" stroke="#a8c5d8" stroke-width="1" filter="url(#glow)"/>
+    <circle cx="200" cy="100" r="1.8" fill="#a8c5d8" opacity="0.45"/>
+
+    <circle cx="150" cy="60" r="3" fill="#0a1628" stroke="#d4a574" stroke-width="1" filter="url(#glow)"/>
+    <circle cx="150" cy="60" r="1.5" fill="#d4a574" opacity="0.4"/>
+  </g>
+
+  <!-- Neural connections - flowing lines between nodes -->
+  <g stroke-width="1" fill="none" opacity="0.2">
+    <path d="M300,70 Q390,50 480,60" stroke="#a8c5d8" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M480,60 Q530,70 580,80" stroke="#d4a574" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="2.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M580,80 Q620,100 660,120" stroke="#a8c5d8" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="3.2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M540,140 Q580,155 620,170" stroke="#d4a574" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="2.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M660,120 Q690,140 720,160" stroke="#a8c5d8" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="3.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M580,80 Q650,70 700,60" stroke="#d4a574" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="4s" repeatCount="indefinite"/>
+    </path>
+    <path d="M200,100 Q250,85 300,70" stroke="#a8c5d8" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="3.8s" repeatCount="indefinite"/>
+    </path>
+    <path d="M150,60 Q175,80 200,100" stroke="#d4a574" stroke-dasharray="4,4">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="4.2s" repeatCount="indefinite"/>
+    </path>
+    <!-- Cross connections -->
+    <path d="M480,60 Q510,100 540,140" stroke="#a8c5d8" stroke-dasharray="3,5" opacity="0.15">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M620,170 Q660,145 700,60" stroke="#d4a574" stroke-dasharray="3,5" opacity="0.12">
+      <animate attributeName="stroke-dashoffset" values="0;-16" dur="4s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Stream of particles flowing from book upward to neural network -->
+  <g fill="#d4a574" opacity="0.2">
+    <circle cx="400" cy="200" r="1.5">
+      <animate attributeName="cy" values="200;120;200" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="400;440;400" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0;0.3" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="410" cy="210" r="1.2">
+      <animate attributeName="cy" values="210;100;210" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="410;500;410" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.25;0;0.25" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="390" cy="205" r="1.8">
+      <animate attributeName="cy" values="205;80;205" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="390;340;390" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0;0.3" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="420" cy="215" r="1.0">
+      <animate attributeName="cy" values="215;130;215" dur="4.5s" repeatCount="indefinite"/>
+      <animate attributeName="cx" values="420;550;420" dur="4.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0;0.2" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Book glow — warm amber underneath -->
+  <ellipse cx="400" cy="340" rx="160" ry="40" fill="#d4a574" opacity="0.04"/>
+  <ellipse cx="400" cy="320" rx="100" ry="25" fill="#d4a574" opacity="0.06"/>
+
+  <!-- Ambient floating particles -->
+  <g fill="#a8c5d8" opacity="0.2">
+    <circle cx="100" cy="180" r="1.3">
+      <animate attributeName="cy" values="180;170;180" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="720" cy="240" r="1.0">
+      <animate attributeName="cy" values="240;232;240" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="180" cy="280" r="1.5">
+      <animate attributeName="cy" values="280;272;280" dur="5.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="650" cy="300" r="1.2">
+      <animate attributeName="cy" values="300;292;300" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <g fill="#d4a574" opacity="0.15">
+    <circle cx="130" cy="150" r="1.0">
+      <animate attributeName="opacity" values="0.15;0.05;0.15" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="750" cy="180" r="1.3">
+      <animate attributeName="opacity" values="0.15;0.05;0.15" dur="5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Corner accents -->
+  <g stroke="#a8c5d8" stroke-width="1" fill="none" opacity="0.12">
+    <path d="M25,25 L25,55 M25,25 L55,25"/>
+    <path d="M775,25 L775,55 M775,25 L745,25"/>
+    <path d="M25,375 L25,345 M25,375 L55,375"/>
+    <path d="M775,375 L775,345 M775,375 L745,375"/>
+  </g>
+</svg>
