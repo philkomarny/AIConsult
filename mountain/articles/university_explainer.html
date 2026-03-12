@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Our AI Work Works — Maryville University</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=Source+Code+Pro:wght@400;500&display=swap');
+
+:root {
+  --bg: #f7f4ef;
+  --paper: #fdfbf8;
+  --ink: #1a1710;
+  --ink-soft: #4a4640;
+  --ink-muted: #9a9490;
+  --rule: #e2ddd6;
+  
+  --c1: #b85c2c;  /* terracotta - foundation */
+  --c2: #2d6a4f;  /* forest - graph */
+  --c3: #1d4e89;  /* navy - products */
+  --c4: #5c3d8f;  /* plum - experience */
+  --c5: #8b6914;  /* gold - reach */
+
+  --c1-bg: #fdf0e8;
+  --c2-bg: #eaf4ef;
+  --c3-bg: #e8eef8;
+  --c4-bg: #f0ecf8;
+  --c5-bg: #fdf5e0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  font-family: 'Source Sans 3', sans-serif;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+/* Masthead */
+.masthead {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 56px 48px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.masthead::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
+}
+
+.masthead-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.masthead-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9a9490;
+  margin-bottom: 20px;
+}
+
+.masthead h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: var(--paper);
+}
+
+.masthead h1 em {
+  font-style: italic;
+  color: #d4a96a;
+}
+
+.masthead-lede {
+  font-size: 17px;
+  color: #ccc8c0;
+  font-weight: 300;
+  max-width: 600px;
+  line-height: 1.7;
+  border-left: 2px solid #3a3730;
+  padding-left: 20px;
+}
+
+/* Main content area */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 48px 80px;
+}
+
+/* Intro prose */
+.intro {
+  padding: 48px 0 40px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: appear 0.5s ease 0.1s forwards;
+}
+
+.intro p {
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+
+.intro p:last-child { margin-bottom: 0; }
+
+.intro strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Section label */
+.section-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* Layer cards */
+.layers {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.layer-wrap {
+  opacity: 0;
+  animation: riseUp 0.55s ease forwards;
+}
+
+.layer-wrap:nth-child(1) { animation-delay: 0.2s; }
+.layer-wrap:nth-child(2) { animation-delay: 0.35s; }
+.layer-wrap:nth-child(3) { animation-delay: 0.5s; }
+.layer-wrap:nth-child(4) { animation-delay: 0.65s; }
+.layer-wrap:nth-child(5) { animation-delay: 0.8s; }
+
+.layer-connector {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 36px;
+  padding-left: 28px;
+}
+
+.connector-line {
+  width: 1px;
+  height: 100%;
+  background: var(--rule);
+}
+
+.connector-arrow {
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-left: 12px;
+  font-family: 'Source Code Pro', monospace;
+  letter-spacing: 0.1em;
+}
+
+.layer-wrap:first-child .layer-connector { display: none; }
+
+.layer-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.25s;
+}
+
+.layer-card:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.layer-top {
+  display: grid;
+  grid-template-columns: 6px 1fr;
+}
+
+.layer-accent {
+  width: 6px;
+  flex-shrink: 0;
+}
+
+.layer-body {
+  padding: 28px 32px;
+}
+
+.layer-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.layer-badge {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.layer-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.layer-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.layer-hook {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.layer-body-text {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.layer-body-text strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Why it matters strip */
+.why-strip {
+  border-top: 1px solid var(--rule);
+  padding: 14px 0 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.why-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.why-text {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+/* Color theming per layer */
+.l1 .layer-accent { background: var(--c1); }
+.l1 .layer-badge { background: var(--c1-bg); color: var(--c1); }
+.l1 .layer-hook { color: var(--c1); }
+
+.l2 .layer-accent { background: var(--c2); }
+.l2 .layer-badge { background: var(--c2-bg); color: var(--c2); }
+.l2 .layer-hook { color: var(--c2); }
+
+.l3 .layer-accent { background: var(--c3); }
+.l3 .layer-badge { background: var(--c3-bg); color: var(--c3); }
+.l3 .layer-hook { color: var(--c3); }
+
+.l4 .layer-accent { background: var(--c4); }
+.l4 .layer-badge { background: var(--c4-bg); color: var(--c4); }
+.l4 .layer-hook { color: var(--c4); }
+
+.l5 .layer-accent { background: var(--c5); }
+.l5 .layer-badge { background: var(--c5-bg); color: var(--c5); }
+.l5 .layer-hook { color: var(--c5); }
+
+/* Closing section */
+.close-section {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--rule);
+  opacity: 0;
+  animation: appear 0.5s ease 1.1s forwards;
+}
+
+.close-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+
+.close-section h2 em { 
+  font-style: italic;
+  color: var(--c5);
+}
+
+.close-section p {
+  font-size: 15px;
+  color: var(--ink-soft);
+  font-weight: 300;
+  line-height: 1.75;
+  margin-bottom: 14px;
+  max-width: 680px;
+}
+
+.close-section p strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Pull quote */
+.pullquote {
+  margin: 32px 0;
+  padding: 24px 32px;
+  background: var(--ink);
+  border-radius: 6px;
+  color: var(--paper);
+}
+
+.pullquote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.6;
+  color: #e8e4dc;
+  margin-bottom: 10px;
+}
+
+.pullquote cite {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #6a6460;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes riseUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .masthead, .content { padding-left: 24px; padding-right: 24px; }
+  .layer-body { padding: 20px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-label">Maryville University · Office of the Chief Future Officer</div>
+    <h1>How Our AI Work <em>Actually</em> Works</h1>
+    <p class="masthead-lede">What you'll learn in this workshop, why it matters for Maryville, and how one empowered person with their own data becomes the building block of something the university has never had before.</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="intro">
+    <p>This workshop is not about AI tools. It's about <strong>you</strong> — your knowledge, your work, your judgment — and what becomes possible when that knowledge is organized, owned, and put to work.</p>
+    <p>By the end of the day, you'll have a working system: a personal knowledge base on your own machine, connected to a private shared brain, powered by an AI that reads your context instead of someone else's training data. That's not a demo. That's a new way of working.</p>
+    <p>But here's the bigger idea: when every person at Maryville works this way, something institutional happens. Individual knowledge compounds. Institutional intelligence emerges. And the university gains something it has never had — <strong>a living data product built from the expertise of its own people</strong>, that it owns completely, and can use however the mission demands.</p>
+    <p>These five layers explain how that journey works — from what you do today in the workshop, to what Maryville becomes capable of in the AI Era.</p>
+  </div>
+
+  <div class="section-label">What you build today — and what it becomes</div>
+
+  <div class="layers">
+
+    <!-- Layer 1 -->
+    <div class="layer-wrap l1">
+      <div class="layer-card">
+        <div class="layer-top">
+          <div class="layer-accent"></div>
+          <div class="layer-body">
+            <div class="layer-meta">
+              <span class="layer-badge">Layer 1</span>
+              <span class="layer-label">What you build in the workshop</span>
+            </div>
+            <div class="layer-title">You leave with a vault — your knowledge, your machine, your rules</div>
+            <div class="layer-hook">In the workshop, you'll build it. After today, you'll actually use it.</div>
+            <p class="layer-body-text">
+              The first thing we do today is set up a personal knowledge base on your own computer. Not in the cloud. Not in a vendor's system. On your machine, in plain text files you own. We'll connect it to a private repository so it syncs securely — but the originals live with you.
+            </p>
+            <p class="layer-body-text">
+              This matters because <strong>most people's expertise lives nowhere</strong>. It's in their head, in their inbox, scattered across tools they don't control. The vault changes that. Your meeting notes, your research, your institutional memory — organized, linked, and accessible to an AI that you've pointed at your own context, not the internet's.
+            </p>
+            <p class="layer-body-text">
+              When the AI helps you draft something, it's drawing on what you know — not a generic model of what everyone knows. That's a fundamentally different kind of help. <strong>And it stays yours.</strong>
+            </p>
+            <div class="why-strip">
+              <span class="why-label">Why it matters for Maryville</span>
+              <span class="why-text">Every person who builds a vault stops losing institutional knowledge to turnover, tool changes, and organizational silos. That knowledge becomes a durable asset — for them and for the university.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connector -->
+    <div class="layer-wrap l2">
+      <div class="layer-connector">
+        <div class="connector-line"></div>
+        <span class="connector-arrow">→ enables</span>
+      </div>
+      <div class="layer-card">
+        <div class="layer-top">
+          <div class="layer-accent"></div>
+          <div class="layer-body">
+            <div class="layer-meta">
+              <span class="layer-badge">Layer 2</span>
+              <span class="layer-label">What your vault connects to</span>
+            </div>
+            <div class="layer-title">Your vault connects to a shared institutional brain</div>
+            <div class="layer-hook">Individual knowledge is valuable. Connected knowledge is transformative.</div>
+            <p class="layer-body-text">
+              In the workshop, you'll connect your vault to a private shared repository — Maryville's institutional brain. What you contribute flows in deliberately. You choose what to share. Nothing leaves without your intent.
+            </p>
+            <p class="layer-body-text">
+              But here's what happens when many people do this: <strong>the university's collective expertise becomes queryable</strong>. A faculty member's curriculum thinking links to an advisor's student experience notes links to an administrator's program data. Patterns emerge that no single person could see. The institution starts to know what it knows.
+            </p>
+            <p class="layer-body-text">
+              Right now, most of Maryville's institutional knowledge lives in people's heads or locked in tools no one else can access. When it retires, it disappears. The shared brain changes that equation — <strong>expertise becomes infrastructure</strong>.
+            </p>
+            <div class="why-strip">
+              <span class="why-label">Why it matters for Maryville</span>
+              <span class="why-text">A university that can query its own collective knowledge can make faster, smarter decisions — about programs, about students, about where the institution needs to go. That capability doesn't exist today. This is how it gets built.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 3 -->
+    <div class="layer-wrap l3">
+      <div class="layer-connector">
+        <div class="connector-line"></div>
+        <span class="connector-arrow">→ enables</span>
+      </div>
+      <div class="layer-card">
+        <div class="layer-top">
+          <div class="layer-accent"></div>
+          <div class="layer-body">
+            <div class="layer-meta">
+              <span class="layer-badge">Layer 3</span>
+              <span class="layer-label">What the shared brain becomes</span>
+            </div>
+            <div class="layer-title">Connected knowledge becomes a data product Maryville owns</div>
+            <div class="layer-hook">This is where the university gains options it doesn't have today.</div>
+            <p class="layer-body-text">
+              When enough people have built their vaults and contributed to the shared brain, something shifts: Maryville has a <strong>structured, sovereign data product</strong> — a living map of its programs, its people's expertise, its students' needs, and the labor market signals that connect them all.
+            </p>
+            <p class="layer-body-text">
+              That product can do things that currently take weeks of manual effort. Evaluating whether a transfer student's prior credits count toward a Maryville degree. Mapping which program is the right fit for a working adult's career goals. Identifying where the curriculum has gaps relative to where employers are hiring. These aren't guesses — they're answers, grounded in Maryville's own knowledge, enriched by context no outside vendor has.
+            </p>
+            <p class="layer-body-text">
+              And because Maryville owns it, <strong>the university decides what to do with it</strong> — license it, build on it, partner with it, or simply use it to serve students better. That's what ownership creates: options.
+            </p>
+            <div class="why-strip">
+              <span class="why-label">Why it matters for Maryville</span>
+              <span class="why-text">Most universities are entirely dependent on vendors for their intelligence layer. Maryville can build its own — and that distinction will matter more every year as AI becomes central to how institutions compete, serve, and survive.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 4 -->
+    <div class="layer-wrap l4">
+      <div class="layer-connector">
+        <div class="connector-line"></div>
+        <span class="connector-arrow">→ enables</span>
+      </div>
+      <div class="layer-card">
+        <div class="layer-top">
+          <div class="layer-accent"></div>
+          <div class="layer-body">
+            <div class="layer-meta">
+              <span class="layer-badge">Layer 4</span>
+              <span class="layer-label">What the data product makes possible</span>
+            </div>
+            <div class="layer-title">The data product powers experiences that were impossible before</div>
+            <div class="layer-hook">Maryville stops being a place that answers questions. It becomes a system that anticipates them.</div>
+            <p class="layer-body-text">
+              A data product built on sovereign institutional knowledge unlocks a new kind of engagement with learners, partners, and employers. Instead of a static website that shows everyone the same options, Maryville can offer a conversation — one that knows a person's context, understands what they've done, and responds with something real.
+            </p>
+            <p class="layer-body-text">
+              A working adult with 15 years of healthcare experience and some prior college credits shouldn't have to spend hours figuring out if Maryville is right for them. <strong>An intelligent experience built on Maryville's own data can tell them in minutes</strong> — here's what counts, here's the path, here's what it costs, here's who to call. That's not a chatbot. That's institutional knowledge made accessible.
+            </p>
+            <p class="layer-body-text">
+              The same capability serves employers looking for talent pipelines, advisors managing caseloads, faculty designing curriculum. <strong>The data product becomes the engine of a fundamentally different kind of university engagement</strong> — one built for the AI Era, not retrofitted to it.
+            </p>
+            <div class="why-strip">
+              <span class="why-label">Why it matters for Maryville</span>
+              <span class="why-text">The institutions that win in the next decade won't just have better programs — they'll have better intelligence about who needs those programs and how to reach them. This is how Maryville builds that capability from the inside out.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 5 -->
+    <div class="layer-wrap l5">
+      <div class="layer-connector">
+        <div class="connector-line"></div>
+        <span class="connector-arrow">→ enables</span>
+      </div>
+      <div class="layer-card">
+        <div class="layer-top">
+          <div class="layer-accent"></div>
+          <div class="layer-body">
+            <div class="layer-meta">
+              <span class="layer-badge">Layer 5</span>
+              <span class="layer-label">Why all of it matters</span>
+            </div>
+            <div class="layer-title">Maryville reaches learners the old system couldn't see</div>
+            <div class="layer-hook">42 million Americans started college and never finished. They didn't fail — the system failed them.</div>
+            <p class="layer-body-text">
+              These are working adults with real credentials, real skills, and real lives that made finishing impossible at the time. They're still out there. Most still want to finish. What they need isn't a better brochure — <strong>they need a university that can see them clearly and show them a real path forward</strong>.
+            </p>
+            <p class="layer-body-text">
+              That's the compounding return on everything in this workshop. When you build your vault today, you're not just organizing your own thinking. You're contributing a piece of the institutional knowledge that — over time, at scale — makes it possible for Maryville to serve a person who left school 15 years ago and finally finds out their experience counts for something.
+            </p>
+            <p class="layer-body-text">
+              <strong>Every layer below this one is infrastructure for this moment.</strong> The vaults, the shared brain, the data product, the experiences — it all exists so that a learner who thought the door was closed can find it open. That's the mission. And it starts with what you build today.
+            </p>
+            <div class="why-strip">
+              <span class="why-label">Why it matters for Maryville</span>
+              <span class="why-text">The universities that earn the trust of stopped-out adult learners in the next decade will do so because they built the intelligence to serve them — not because they ran more ads. This workshop is how Maryville starts building that intelligence.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="close-section">
+
+    <div class="pullquote">
+      <p>"We stop feeding machines and start building something that serves us — a data product, an institutional brain that enables what was once impossible."</p>
+      <cite>Phil Komarny · Chief Future Officer, Maryville University</cite>
+    </div>
+
+    <h2>You are the <em>first layer</em>.</h2>
+    <p>Everything in this framework — the shared brain, the data product, the experiences that reach learners — depends on people who work the way you'll work after today. With their knowledge organized. On infrastructure they own. Contributing deliberately to something larger than themselves.</p>
+    <p>The university can't buy this from a vendor. No platform ships with Maryville's institutional knowledge already inside it. <strong>That knowledge lives in you — in this room, across this campus.</strong> The workshop is how we start turning it into something durable.</p>
+    <p>What you build today is small. A vault. A few files. A first commit. But it's the same thing every piece of institutional intelligence starts as: <strong>one person deciding their knowledge is worth keeping</strong>.</p>
+    <p>That decision, made by enough people, is what positions Maryville to compete, serve, and lead in the AI Era — not by chasing the latest tool, but by owning the one thing no tool can replicate: what we know, and who we are.</p>
+  </div>
+
+</div>
+</body>
+</html>
