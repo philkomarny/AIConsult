@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Data, Your AI, Your Day — Maryville University</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=Source+Code+Pro:wght@400;500&display=swap');
+
+:root {
+  --bg: #f7f4ef;
+  --paper: #fdfbf8;
+  --ink: #1a1710;
+  --ink-soft: #4a4640;
+  --ink-muted: #9a9490;
+  --rule: #e2ddd6;
+
+  --c1: #b85c2c;  /* terracotta - foundation */
+  --c2: #2d6a4f;  /* forest - graph */
+  --c3: #1d4e89;  /* navy - products */
+  --c4: #5c3d8f;  /* plum - experience */
+  --c5: #8b6914;  /* gold - reach */
+
+  --c1-bg: #fdf0e8;
+  --c2-bg: #eaf4ef;
+  --c3-bg: #e8eef8;
+  --c4-bg: #f0ecf8;
+  --c5-bg: #fdf5e0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  font-family: 'Source Sans 3', sans-serif;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+/* Masthead */
+.masthead {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 56px 48px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.masthead::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
+}
+
+.masthead-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.masthead-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9a9490;
+  margin-bottom: 20px;
+}
+
+.masthead h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: var(--paper);
+}
+
+.masthead h1 em {
+  font-style: italic;
+  color: #d4a96a;
+}
+
+.masthead-lede {
+  font-size: 17px;
+  color: #ccc8c0;
+  font-weight: 300;
+  max-width: 600px;
+  line-height: 1.7;
+  border-left: 2px solid #3a3730;
+  padding-left: 20px;
+}
+
+/* Main content area */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 48px 80px;
+}
+
+/* Intro prose */
+.intro {
+  padding: 48px 0 40px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: appear 0.5s ease 0.1s forwards;
+}
+
+.intro p {
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+
+.intro p:last-child { margin-bottom: 0; }
+
+.intro strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Section label */
+.section-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* Layer cards */
+.layers {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.layer-wrap {
+  opacity: 0;
+  animation: riseUp 0.55s ease forwards;
+}
+
+.layer-wrap:nth-child(1) { animation-delay: 0.2s; }
+.layer-wrap:nth-child(2) { animation-delay: 0.35s; }
+.layer-wrap:nth-child(3) { animation-delay: 0.5s; }
+.layer-wrap:nth-child(4) { animation-delay: 0.65s; }
+.layer-wrap:nth-child(5) { animation-delay: 0.8s; }
+
+.layer-connector {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 36px;
+  padding-left: 28px;
+}
+
+.connector-line {
+  width: 1px;
+  height: 100%;
+  background: var(--rule);
+}
+
+.connector-arrow {
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-left: 12px;
+  font-family: 'Source Code Pro', monospace;
+  letter-spacing: 0.1em;
+}
+
+.layer-wrap:first-child .layer-connector { display: none; }
+
+.layer-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.25s;
+}
+
+.layer-card:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.layer-top {
+  display: grid;
+  grid-template-columns: 6px 1fr;
+}
+
+.layer-accent {
+  width: 6px;
+  flex-shrink: 0;
+}
+
+.layer-body {
+  padding: 28px 32px;
+}
+
+.layer-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.layer-badge {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.layer-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.layer-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.layer-hook {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.layer-body-text {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.layer-body-text strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Why it matters strip */
+.why-strip {
+  border-top: 1px solid var(--rule);
+  padding: 14px 0 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.why-label {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.why-text {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+/* Color theming per layer */
+.l1 .layer-accent { background: var(--c1); }
+.l1 .layer-badge { background: var(--c1-bg); color: var(--c1); }
+.l1 .layer-hook { color: var(--c1); }
+
+.l2 .layer-accent { background: var(--c2); }
+.l2 .layer-badge { background: var(--c2-bg); color: var(--c2); }
+.l2 .layer-hook { color: var(--c2); }
+
+.l3 .layer-accent { background: var(--c3); }
+.l3 .layer-badge { background: var(--c3-bg); color: var(--c3); }
+.l3 .layer-hook { color: var(--c3); }
+
+.l4 .layer-accent { background: var(--c4); }
+.l4 .layer-badge { background: var(--c4-bg); color: var(--c4); }
+.l4 .layer-hook { color: var(--c4); }
+
+.l5 .layer-accent { background: var(--c5); }
+.l5 .layer-badge { background: var(--c5-bg); color: var(--c5); }
+.l5 .layer-hook { color: var(--c5); }
+
+/* Closing section */
+.close-section {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--rule);
+  opacity: 0;
+  animation: appear 0.5s ease 1.1s forwards;
+}
+
+.close-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+
+.close-section h2 em {
+  font-style: italic;
+  color: var(--c5);
+}
+
+.close-section p {
+  font-size: 15px;
+  color: var(--ink-soft);
+  font-weight: 300;
+  line-height: 1.75;
+  margin-bottom: 14px;
+  max-width: 680px;
+}
+
+.close-section p strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Pull quote */
+.pullquote {
+  margin: 32px 0;
+  padding: 24px 32px;
+  background: var(--ink);
+  border-radius: 6px;
+  color: var(--paper);
+}
+
+.pullquote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.6;
+  color: #e8e4dc;
+  margin-bottom: 10px;
+}
+
+.pullquote cite {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #6a6460;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes riseUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .masthead, .content { padding-left: 24px; padding-right: 24px; }
+  .layer-body { padding: 20px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-label">Maryville University · Office of the Chief Future Officer</div>
+    <h1>Your Data. Your AI. <em>Your Day.</em></h1>
+    <p class="masthead-lede">This is the beginning of a relationship. Between you and an AI that actually knows your work, your context, and what you're trying to do. Built on your machine. Owned by you.</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="intro">
+    <p>I want to tell you what happened to me. I built a vault. Put my notes in it, my meeting context, the things I'd been carrying around in my head for years. Then I pointed an AI at it and typed <strong>/today</strong>.</p>
+    <p>The first morning was useful. The fifth morning was different. By the second week I'd stopped making my own to-do lists. I'd stopped manually creating calendar invites. I was just... talking to my computer. Telling it what I was thinking. Asking it what I was forgetting. And it knew. Because it had my context, not the internet's.</p>
+    <p>That felt freeing in a way I wasn't expecting. More human, not less. Like I'd gotten a piece of my brain back that I didn't know I'd outsourced to sticky notes and inbox dread.</p>
+    <p>This workshop is about giving you that same experience. Five layers, starting with what you build today, ending with what it means for Maryville when all of us work this way.</p>
+  </div>
+
+  <div class="section-label">Your data, your AI, your day</div>
+
+  <div class="layers">
+
+    <!-- Layer 1 -->
+    <div class="layer-wrap l1">
+      <div class="layer-card">
+        <div class="layer-top">
+          <div class="layer-accent"></div>
+          <div class="layer-body">
+            <div class="layer-meta">
+              <span class="layer-badge">Layer 1</span>
+              <span class="layer-label">Your data</span>
+            </div>
+            <div class="layer-title">Everything you know, in one place, on your machine</div>
+            <div class="layer-hook">You've been carrying all of this in your head. Let's put it somewhere useful.</div>
+            <p class="layer-body-text">
+              We start by building a vault. Plain text files on your computer, synced to a private repository you control. Your meeting notes. Your research. The patterns you've noticed about the students you work with. The stuff that lives in your inbox and your memory and nowhere else.
+            </p>
+            <p class="layer-body-text">
+              Right now that knowledge is scattered across tools you don't own, trapped in formats you can't search, disappearing into email threads nobody will ever reread. The vault gathers it. Not into someone else's system. Into yours.
+            </p>
+            <p class="layer-body-text">
+              This is the raw material for everything that follows. It sounds simple because it is. That's the point. A folder of text files you can read, search, and hand to an AI that works for you.
+            </p>
+            <div class="why-strip">
+              <span class="why-label">What changes</span>
+              <span class="why-text">You stop losing what you know. The expertise you've built over years of doing this work finally has an address.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 2 -->
+    <div class="layer-wrap l2">
+      <div class="layer-connector">
+        <div class="connector-line"></div>
+        <span class="connector-arrow">→ enables</span>
+      </div>
+      <div class="layer-card">
+        <div class="layer-top">
+          <div class="layer-accent"></div>
+          <div class="layer-body">
+            <div class="layer-meta">
+              <span class="layer-badge">Layer 2</span>
+              <span class="layer-label">Your AI</span>
+            </div>
+            <div class="layer-title">The /today script, and the beginning of a relationship</div>
+            <div class="layer-hook">This is where it stops being a tool and starts being a conversation.</div>
+            <p class="layer-body-text">
+              Once the vault exists, we point an AI at it and build a <strong>/today script</strong>. You run it in the morning. It reads everything you've put in your vault and tells you what deserves your attention. Not what's in your inbox. What actually matters, based on what <em>you</em> know.
+            </p>
+            <p class="layer-body-text">
+              But here's the thing nobody tells you about this: /today is just the first conversation. You run it, you react to it, you add notes about your day, and tomorrow it knows more. A week in, it's picking up on patterns you hadn't articulated. A month in, you're not typing tasks into a to-do app. You're talking to your computer. Saying "I think the enrollment numbers in nursing are going to be a problem next semester" and watching it connect that to three things in your vault you'd forgotten about.
+            </p>
+            <p class="layer-body-text">
+              I know how that sounds. I thought so too. Then I stopped creating my own calendar invites. I just told the AI what I needed and it happened. I started thinking out loud to it. And the thing I wasn't expecting: it felt more human, not less. Like I'd taken back the mental overhead I'd been donating to software that never knew my name.
+            </p>
+            <div class="why-strip">
+              <span class="why-label">What changes</span>
+              <span class="why-text">You stop managing tools and start thinking with one. The AI learns your context over time, and the more you work together, the less busywork survives.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 3 -->
+    <div class="layer-wrap l3">
+      <div class="layer-connector">
+        <div class="connector-line"></div>
+        <span class="connector-arrow">→ enables</span>
+      </div>
+      <div class="layer-card">
+        <div class="layer-top">
+          <div class="layer-accent"></div>
+          <div class="layer-body">
+            <div class="layer-meta">
+              <span class="layer-badge">Layer 3</span>
+              <span class="layer-label">Your day</span>
+            </div>
+            <div class="layer-title">You let go of the small stuff. You hold on to what matters.</div>
+            <div class="layer-hook">The to-do list, the calendar invite, the follow-up reminder. You used to manage all of that yourself.</div>
+            <p class="layer-body-text">
+              Something happens when the AI knows your context well enough that you trust it. You stop spending your mornings on logistics. The follow-up email you were going to forget? It's already drafted. The meeting prep you used to scramble for at 8:55? It read your vault and pulled the relevant notes before you asked.
+            </p>
+            <p class="layer-body-text">
+              You start your day by talking. Not typing commands into an app. Talking. "What should I be thinking about before my 10 o'clock?" And the answer is specific, because the AI has been reading what you've been writing for weeks. It knows your students. It knows your projects. It knows the thing you said last Tuesday that you've already forgotten.
+            </p>
+            <p class="layer-body-text">
+              That's the part that surprised me. I expected efficiency. I got presence. The AI handled the operational noise, and what was left was the work I actually care about. The conversation with the student. The idea I'd been circling for a month. The thing only I can do. I had time for it because I wasn't managing the machinery of my own day.
+            </p>
+            <div class="why-strip">
+              <span class="why-label">What changes</span>
+              <span class="why-text">Your day starts with the work that matters instead of the work that's loudest. The AI carries the logistics. You carry the judgment.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 4 -->
+    <div class="layer-wrap l4">
+      <div class="layer-connector">
+        <div class="connector-line"></div>
+        <span class="connector-arrow">→ enables</span>
+      </div>
+      <div class="layer-card">
+        <div class="layer-top">
+          <div class="layer-accent"></div>
+          <div class="layer-body">
+            <div class="layer-meta">
+              <span class="layer-badge">Layer 4</span>
+              <span class="layer-label">Multiplied across Maryville</span>
+            </div>
+            <div class="layer-title">One person's vault is personal. A hundred vaults is a data strategy.</div>
+            <div class="layer-hook">Your empowerment, multiplied, becomes institutional leverage.</div>
+            <p class="layer-body-text">
+              When you build a vault and start working with an AI that knows your context, that's a personal win. When fifty people across campus do the same thing, on infrastructure Maryville owns, something else happens. The university starts accumulating a data layer that no vendor can hold hostage.
+            </p>
+            <p class="layer-body-text">
+              Think about where Maryville's institutional knowledge lives right now. Inside a CRM. Inside an LMS. Inside vendor databases where the contract renewal is the only thing between you and losing access to your own data. That's not a data strategy. That's a dependency. The vaults flip that. Your people's expertise, in plain text, on machines the university controls. Secured, backed up, and portable.
+            </p>
+            <p class="layer-body-text">
+              The dimmer switch: once your knowledge layer lives on your own infrastructure, every SaaS tool becomes adjustable. Keep what's worth paying for. Replace what isn't. You're not ripping and replacing. You're choosing, from a position where walking away is an actual option, because the knowledge isn't locked inside the vendor's box anymore.
+            </p>
+            <div class="why-strip">
+              <span class="why-label">What changes for Maryville</span>
+              <span class="why-text">Every vendor renewal becomes a choice, not a dependency. The university's data strategy grows from the ground up, built on the knowledge its people already have, secured on infrastructure it already owns.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 5 -->
+    <div class="layer-wrap l5">
+      <div class="layer-connector">
+        <div class="connector-line"></div>
+        <span class="connector-arrow">→ enables</span>
+      </div>
+      <div class="layer-card">
+        <div class="layer-top">
+          <div class="layer-accent"></div>
+          <div class="layer-body">
+            <div class="layer-meta">
+              <span class="layer-badge">Layer 5</span>
+              <span class="layer-label">What the students feel</span>
+            </div>
+            <div class="layer-title">The students don't see the vault. They see you.</div>
+            <div class="layer-hook">They see someone who remembered. Who followed up. Who had time.</div>
+            <p class="layer-body-text">
+              A student sits down with you and you already know what's going on. Not because you crammed before the meeting. Because your AI told you this morning that this student went quiet two weeks ago, that the financial aid issue from October never got resolved, that they're in the same cohort as three other students you flagged last month. You knew before they knocked.
+            </p>
+            <p class="layer-body-text">
+              Multiply that across every advisor, every faculty member, every person in financial aid and career services. Each of them with their own vault, their own AI relationship, their own /today that starts the morning with clarity. The students don't know about any of it. They just know that something feels different here. That people are paying attention. That Maryville seems to actually see them.
+            </p>
+            <p class="layer-body-text">
+              That's what all of this is for. Your data, your AI, your day, empowering you so that the people you serve get the version of you that isn't buried under busywork. Securely. Privately. All yours. And all of it adding up to a university that serves its students the way they deserve.
+            </p>
+            <div class="why-strip">
+              <span class="why-label">What changes for our students</span>
+              <span class="why-text">They get you at your best. Not because you worked harder, but because the operational noise got handled and what was left was the thing only a human can do: show up, pay attention, and care about the person sitting across from you.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="close-section">
+
+    <div class="pullquote">
+      <p>"I started talking to my computer. I know how that sounds. But the AI knew my work, my context, my students. And what I got back wasn't efficiency. It was presence. I had time for the things that actually matter."</p>
+      <cite>Phil Komarny · Chief Future Officer, Maryville University</cite>
+    </div>
+
+    <h2>Your data. Your AI. <em>Your day.</em></h2>
+    <p>The vault is a folder of text files. The /today script is a morning habit. But the relationship you build with the AI that reads them, that's the thing that changes how you work. It learns your patterns. It carries your logistics. And over time, you stop managing your day and start living it.</p>
+    <p>Multiply that across the people in this room and you have a data strategy built on knowledge Maryville owns. A dimmer switch on every vendor relationship. And students who feel the difference without ever knowing why.</p>
+    <p>Securely. Privately. All ours. It starts this afternoon.</p>
+  </div>
+
+</div>
+</body>
+</html>
