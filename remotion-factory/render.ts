@@ -13,7 +13,7 @@ import path from "path";
 import { bundle } from "@remotion/bundler";
 import { renderMedia, selectComposition } from "@remotion/renderer";
 
-const COMPOSITIONS = ["FutureIsNow"];
+const COMPOSITIONS = ["FutureIsNow", "TheUnfinished"];
 
 async function render(compositionId?: string) {
   const idsToRender = compositionId
