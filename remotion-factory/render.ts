@@ -13,7 +13,22 @@ import path from "path";
 import { bundle } from "@remotion/bundler";
 import { renderMedia, selectComposition } from "@remotion/renderer";
 
-const COMPOSITIONS = ["FutureIsNow", "TheUnfinished"];
+const COMPOSITIONS = [
+  "FutureIsNow",
+  "TheUnfinished",
+  "IkigaiPoop",
+  "BoneDry",
+  "CultureEatsProcess",
+  "GutenbergToGpt",
+  "ScalingYourTalents",
+  "The911Doctrine",
+  "TheAmplifier",
+  "TheHiddenLanguage",
+  "TheNod",
+  "TheThreeLaws",
+  "WhyWereHere",
+  "WordProcessorMoment",
+];
 
 async function render(compositionId?: string) {
   const idsToRender = compositionId
