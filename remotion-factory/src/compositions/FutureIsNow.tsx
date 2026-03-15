@@ -445,6 +445,17 @@ export const FutureIsNow: React.FC = () => {
         </svg>
       </AbsoluteFill>
 
+      {/* === CLAUDEVISION CAPTION === */}
+      <div style={{
+        position: "absolute",
+        bottom: 8,
+        right: 12,
+        fontFamily: "Outfit, sans-serif",
+        fontSize: 11,
+        color: "rgba(255,255,255,0.35)",
+        letterSpacing: 1.5,
+      }}>ClaudeVision</div>
+
       <CornerAccents />
     </AbsoluteFill>
   );

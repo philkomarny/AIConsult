@@ -454,6 +454,17 @@ export const WhyWereHere: React.FC = () => {
       {isFlash && (
         <AbsoluteFill style={{ backgroundColor: "#fff", opacity: 0.65 }} />
       )}
+
+      {/* === CLAUDEVISION CAPTION === */}
+      <div style={{
+        position: "absolute",
+        bottom: 8,
+        right: 12,
+        fontFamily: "Outfit, sans-serif",
+        fontSize: 11,
+        color: "rgba(255,255,255,0.35)",
+        letterSpacing: 1.5,
+      }}>ClaudeVision</div>
     </AbsoluteFill>
   );
 };
