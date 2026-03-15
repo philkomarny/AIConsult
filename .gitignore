@@ -1,6 +1,9 @@
 # macOS
 .DS_Store
 
+# GCP credentials
+gcp-tts-key.json
+
 # AI/Editor configs (keep these local)
 .agent/
 .agents/

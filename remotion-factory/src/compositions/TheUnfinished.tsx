@@ -1,10 +1,12 @@
 import React from "react";
 import {
   AbsoluteFill,
+  Audio,
   useCurrentFrame,
   useVideoConfig,
   interpolate,
   spring,
+  staticFile,
   Easing,
 } from "remotion";
 import { Background } from "../components/Background";
@@ -142,6 +144,7 @@ export const TheUnfinished: React.FC = () => {
 
   return (
     <AbsoluteFill>
+      <Audio src={staticFile("audio/the-unfinished.mp3")} volume={1} />
       <Background />
       <GridOverlay />
       <Stars />

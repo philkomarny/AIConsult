@@ -1568,6 +1568,20 @@ body {
     color: var(--gold);
 }
 
+.article-listen {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: rgba(168, 197, 216, 0.5);
+    font-style: italic;
+    margin-top: 0.25rem;
+    transition: color 0.3s ease;
+}
+
+.article-card:hover .article-listen {
+    color: var(--gold);
+}
+
 /* Article Content */
 .article-content {
     max-width: 680px;

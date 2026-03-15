@@ -1,10 +1,12 @@
 import React from "react";
 import {
   AbsoluteFill,
+  Audio,
   useCurrentFrame,
   useVideoConfig,
   interpolate,
   spring,
+  staticFile,
   Easing,
 } from "remotion";
 import { palette } from "../components/MountainPalette";
@@ -171,6 +173,7 @@ export const WordProcessorMoment: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: palette.bgDark }}>
+      <Audio src={staticFile("audio/word-processor-moment.mp3")} volume={1} />
 
       {/* === TITLE CARD === */}
       {titleOpacity > 0 && (

@@ -1,10 +1,12 @@
 import React from "react";
 import {
   AbsoluteFill,
+  Audio,
   useCurrentFrame,
   useVideoConfig,
   interpolate,
   spring,
+  staticFile,
   Easing,
 } from "remotion";
 import { palette } from "../components/MountainPalette";
@@ -186,6 +188,7 @@ export const TheThreeLaws: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: palette.bgDark }}>
+      <Audio src={staticFile("audio/the-three-laws.mp3")} volume={1} />
 
       {/* === TITLE CARD === */}
       {titleOpacity > 0 && (
